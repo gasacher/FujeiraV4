@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "image": "assets/img/ig1.png",
+      "alt": "Fujeira post 1",
+      "href": "https://instagram.com/fujeirastore"
+    },
+    {
+      "image": "assets/img/ig2.png",
+      "alt": "Fujeira post 2",
+      "href": "https://instagram.com/fujeirastore"
+    },
+    {
+      "image": "assets/img/ig3.png",
+      "alt": "Fujeira post 3",
+      "href": "https://instagram.com/fujeirastore"
+    },
+    {
+      "image": "assets/img/ig4.png",
+      "alt": "Fujeira post 4",
+      "href": "https://instagram.com/fujeirastore"
+    },
+    {
+      "image": "assets/img/ig5.png",
+      "alt": "Fujeira post 5",
+      "href": "https://instagram.com/fujeirastore"
+    },
+    {
+      "image": "assets/img/ig6.png",
+      "alt": "Fujeira post 6",
+      "href": "https://instagram.com/fujeirastore"
+    }
+  ]
+}

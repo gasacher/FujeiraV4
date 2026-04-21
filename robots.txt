@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /pago-exitoso.html
+Disallow: /pago-fallido.html
+Disallow: /pago-pendiente.html
+
+Sitemap: https://TUUSUARIO.github.io/fujeira-v4/sitemap.xml

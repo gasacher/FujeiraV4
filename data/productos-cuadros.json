@@ -1,0 +1,284 @@
+[
+  
+  {
+    "codigo": "DEC-CUA-01",
+    "proveedor": "cuadros",
+    "nombre": "Diego",
+    "categoria": "cuadros",
+    "precio": 30000,
+    "destacado": true,
+    "medidas": ["30x40"],
+    "marco": ["Madera natural", "Negro", "Blanco"],
+    "fotos": [
+      "assets/catalogo/cuadros/cuadro_diego02.jpg",
+      "assets/catalogo/cuadros/cuadro_diego01.jpg"
+    ]
+  },
+
+  {
+    "codigo": "DEC-CUA-02",
+    "proveedor": "cuadros",
+    "nombre": "Román",
+    "categoria": "cuadros",
+    "precio": 30000,
+    "destacado": true,
+    "medidas": ["30x40"],
+    "marco": ["Madera natural", "Negro", "Blanco"],
+    "fotos": [
+      "assets/catalogo/cuadros/cuadro_roman03.jpg",
+      "assets/catalogo/cuadros/cuadro_roman04.jpg"
+    ]
+  },
+
+  {
+    "codigo": "DEC-CUA-03",
+    "proveedor": "cuadros",
+    "nombre": "Bati Fiorentina",
+    "categoria": "cuadros",
+    "precio": 30000,
+    "destacado": true,
+    "medidas": ["30x40"],
+    "marco": ["Madera natural", "Negro", "Blanco"],
+    "fotos": [
+      "assets/catalogo/cuadros/cuadro_bati02.jpg",
+      "assets/catalogo/cuadros/cuadro_bati01.jpg"
+    ]
+  },
+
+  {
+    "codigo": "DEC-CUA-04",
+    "proveedor": "cuadros",
+    "nombre": "Messi",
+    "categoria": "cuadros",
+    "precio": 30000,
+    "destacado": true,
+    "medidas": ["30x40"],
+    "marco": ["Madera natural", "Negro", "Blanco"],
+    "fotos": [
+      "assets/catalogo/cuadros/cuadro_messi03.jpg",
+      "assets/catalogo/cuadros/cuadro_messi04.jpg"
+    ]
+  },
+  
+  {
+      "codigo": "DEC-CUA-05",
+      "proveedor": "cuadros",
+      "nombre": "Argentina vs Francia 2022",
+      "categoria": "cuadros",
+      "precio": 30000,
+      "destacado": true,
+      "medidas": ["30x40"],
+      "marco": ["Madera natural", "Negro", "Blanco"],
+      "fotos": [
+        "assets/catalogo/cuadros/cuadro_arg02.jpg",
+        "assets/catalogo/cuadros/cuadro_arg01.jpg"
+      ]
+    },
+    {
+      "codigo": "DEC-CUA-06",
+      "proveedor": "cuadros",
+      "nombre": "Boca Libertadores",
+      "categoria": "cuadros",
+      "precio": 30000,
+      "destacado": true,
+      "medidas": ["30x40"],
+      "marco": ["Madera natural", "Negro", "Blanco"],
+      "fotos": [
+        "assets/catalogo/cuadros/cuadro_boca_lib02.jpg",
+        "assets/catalogo/cuadros/cuadro_boca_lib01.jpg"
+      ]
+    },
+    {
+      "codigo": "DEC-CUA-07",
+      "proveedor": "cuadros",
+      "nombre": "Boca Intercontinental",
+      "categoria": "cuadros",
+      "precio": 30000,
+      "destacado": true,
+      "medidas": ["30x40"],
+      "marco": ["Madera natural", "Negro", "Blanco"],
+      "fotos": [
+        "assets/catalogo/cuadros/cuadro_boca_inter02.jpg",
+        "assets/catalogo/cuadros/cuadro_boca_inter01.jpg"
+      ]
+    },
+    {
+      "codigo": "DEC-CUA-08",
+      "proveedor": "cuadros",
+      "nombre": "Independiente Libertadores",
+      "categoria": "cuadros",
+      "precio": 30000,
+      "destacado": true,
+      "medidas": ["30x40"],
+      "marco": ["Madera natural", "Negro", "Blanco"],
+      "fotos": [
+        "assets/catalogo/cuadros/cuadro_rojo02.jpg",
+        "assets/catalogo/cuadros/cuadro_rojo01.jpg"
+      ]
+    },
+    {
+      "codigo": "DEC-CUA-09",
+      "proveedor": "cuadros",
+      "nombre": "Diego Gol del Siglo",
+      "categoria": "cuadros",
+      "precio": 30000,
+      "destacado": true,
+      "medidas": ["30x40"],
+      "marco": ["Madera natural", "Negro", "Blanco"],
+      "fotos": [
+        "assets/catalogo/cuadros/cuadro_diego_goldelsiglo02.jpg",
+        "assets/catalogo/cuadros/cuadro_diego_goldelsiglo01.jpg"
+      ]
+    },
+    {
+      "codigo": "DEC-CUA-10",
+      "proveedor": "cuadros",
+      "nombre": "Tévez",
+      "categoria": "cuadros",
+      "precio": 30000,
+      "destacado": true,
+      "medidas": ["30x40"],
+      "marco": ["Madera natural", "Negro", "Blanco"],
+      "fotos": [
+        "assets/catalogo/cuadros/cuadro_tevez02.jpg",
+        "assets/catalogo/cuadros/cuadro_tevez01.jpg"
+      ]
+    },
+    {
+      "codigo": "DEC-CUA-11",
+      "proveedor": "cuadros",
+      "nombre": "Cantona",
+      "categoria": "cuadros",
+      "precio": 30000,
+      "destacado": true,
+      "medidas": ["30x40"],
+      "marco": ["Madera natural", "Negro", "Blanco"],
+      "fotos": [
+        "assets/catalogo/cuadros/cuadro_cantona02.jpg",
+        "assets/catalogo/cuadros/cuadro_cantona01.jpg"
+      ]
+    },
+
+    {
+      "codigo": "DEC-CUA-12",
+      "proveedor": "cuadros",
+      "nombre": "Bati",
+      "categoria": "cuadros",
+      "precio": 30000,
+      "destacado": true,
+      "medidas": ["30x40"],
+      "marco": ["Madera natural", "Negro", "Blanco"],
+      "fotos": [
+        "assets/catalogo/cuadros/cuadro_bati03.jpg",
+        "assets/catalogo/cuadros/cuadro_bati04.jpg"
+      ]
+    },
+
+    {
+      "codigo": "DEC-CUA-13",
+      "proveedor": "cuadros",
+      "nombre": "Zidane",
+      "categoria": "cuadros",
+      "precio": 30000,
+      "destacado": true,
+      "medidas": ["30x40"],
+      "marco": ["Madera natural", "Negro", "Blanco"],
+      "fotos": [
+        "assets/catalogo/cuadros/cuadro_zidane02.jpg",
+        "assets/catalogo/cuadros/cuadro_zidane01.jpg"
+      ]
+    },
+
+    {
+      "codigo": "DEC-CUA-14",
+      "proveedor": "cuadros",
+      "nombre": "River",
+      "categoria": "cuadros",
+      "precio": 30000,
+      "destacado": true,
+      "medidas": ["30x40"],
+      "marco": ["Madera natural", "Negro", "Blanco"],
+      "fotos": [
+        "assets/catalogo/cuadros/cuadro_river02.jpg",
+        "assets/catalogo/cuadros/cuadro_river01.jpg"
+      ]
+    },
+
+    {
+      "codigo": "DEC-CUA-15",
+      "proveedor": "cuadros",
+      "nombre": "Messi",
+      "categoria": "cuadros",
+      "precio": 30000,
+      "destacado": true,
+      "medidas": ["30x40"],
+      "marco": ["Madera natural", "Negro", "Blanco"],
+      "fotos": [
+        "assets/catalogo/cuadros/cuadro_messi02.jpg",
+        "assets/catalogo/cuadros/cuadro_messi01.jpg"
+      ]
+    },
+
+    {
+      "codigo": "DEC-CUA-16",
+      "proveedor": "cuadros",
+      "nombre": "Dinhno",
+      "categoria": "cuadros",
+      "precio": 30000,
+      "destacado": true,
+      "medidas": ["30x40"],
+      "marco": ["Madera natural", "Negro", "Blanco"],
+      "fotos": [
+        "assets/catalogo/cuadros/cuadro_dinho02.jpg",
+        "assets/catalogo/cuadros/cuadro_dinho01.jpg"
+      ]
+    },
+
+    {
+      "codigo": "DEC-CUA-17",
+      "proveedor": "cuadros",
+      "nombre": "Román",
+      "categoria": "cuadros",
+      "precio": 30000,
+      "destacado": true,
+      "medidas": ["30x40"],
+      "marco": ["Madera natural", "Negro", "Blanco"],
+      "fotos": [
+        "assets/catalogo/cuadros/cuadro_roman01.jpg",
+        "assets/catalogo/cuadros/cuadro_roman02.jpg"
+      ]
+    },
+
+    {
+      "codigo": "DEC-CUA-18",
+      "proveedor": "cuadros",
+      "nombre": "Diego La mano de Dios",
+      "categoria": "cuadros",
+      "precio": 30000,
+      "destacado": true,
+      "medidas": ["30x40"],
+      "marco": ["Madera natural", "Negro", "Blanco"],
+      "fotos": [
+        "assets/catalogo/cuadros/cuadro_diego03.jpg",
+        "assets/catalogo/cuadros/cuadro_diego04.jpg"
+      ]
+    },
+
+    {
+      "codigo": "DEC-CUA-19",
+      "proveedor": "cuadros",
+      "nombre": "Diego México 86",
+      "categoria": "cuadros",
+      "precio": 30000,
+      "destacado": true,
+      "medidas": ["30x40"],
+      "marco": ["Madera natural", "Negro", "Blanco"],
+      "fotos": [
+        "assets/catalogo/cuadros/cuadro_diego06.jpg",
+        "assets/catalogo/cuadros/cuadro_diego05.jpg"
+      ]
+    }
+    
+
+
+  ]

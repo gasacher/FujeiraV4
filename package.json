@@ -1,0 +1,17 @@
+{
+  "name": "fujeira",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass scss/main.scss css/main.css --no-source-map --watch",
+    "sass:build": "sass scss/main.scss css/main.css --no-source-map",
+    "serve": "python3 -m http.server 8080"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.94.2"
+  }
+}

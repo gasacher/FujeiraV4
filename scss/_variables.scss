@@ -1,0 +1,33 @@
+
+$color-bg: #050608;
+$color-bg-soft: #101218;
+$color-text: #f8f9fa;
+$color-muted: #aeb3c1;
+$color-accent: #CCFF00;
+$color-accent-soft: #CCFF00;
+$color-fem-bg: #fbe9ff;
+
+$font-body: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+  sans-serif;
+$font-title: "Bebas Neue", system-ui, sans-serif;
+
+$radius-card: 1rem;
+$radius-pill: 999px;
+
+$font-titles: $font-title;
+
+$fujeira-dark: $color-bg;
+$fujeira-light: $color-text;
+
+$fujeira-bg: $color-bg;
+$fujeira-bg-soft: $color-bg-soft;
+
+$fujeira-gold: $color-accent;
+$fujeira-gold-soft: $color-accent-soft;
+
+$fujeira-fem-bg: $color-fem-bg;
+$fujeira-fem-border: $color-accent;
+
+:root {
+  --fujeira-accent: #CCFF00;
+}

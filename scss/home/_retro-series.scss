@@ -1,0 +1,15 @@
+@use "../variables" as v;
+
+.retro-series-home__eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.retro-series-hero__line-italic {
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 32rem;
+  line-height: 1.55;
+}
