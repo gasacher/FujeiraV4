@@ -1,0 +1,35 @@
+@use "variables" as v;
+
+.contact-page {
+  background: #000;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+
+  .section-contact {
+    padding-top: 140px;
+    padding-bottom: 100px;
+  }
+
+  .section-title {
+    color: #fff;
+  }
+
+  p {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .text-muted {
+    color: rgba(255, 255, 255, 0.65) !important;
+  }
+
+  .contact-mail {
+    color: v.$color-accent;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .contact-mail:hover {
+    text-decoration: underline;
+  }
+}

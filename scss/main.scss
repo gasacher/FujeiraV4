@@ -1,0 +1,26 @@
+
+@use "variables";
+@use "global";
+@use "components";
+
+@use "navbar";
+@use "footer";
+
+@use "home";
+
+@use "home/retro-series";
+
+@use "home/destacados";
+
+@use "home/nosotros";
+
+@use "home/faqs";
+
+@use "contacto";
+
+@use "catalog/catalog";
+@use "catalog/product-card";
+
+@use "product/product-page";
+@use "product/product-gallery";
+@use "product/related";

@@ -1,0 +1,2278 @@
+@charset "UTF-8";
+/* ============================
+   MAIN - FUJEIRA STORE
+============================ */
+/* Base */
+/* VARIABLES FUJEIRA */
+/* Colores */
+/* Tipografías */
+/* Otros */
+/* --------- ALIASES PARA QUE NO TIRE ERRORES --------- */
+/* Tipografías */
+/* Colores convertidos al formato esperado por otros .scss */
+/* Otros (ya existen, NO se redefinen) */
+:root {
+  --fujeira-accent: #CCFF00;
+}
+
+/* ============================
+   MAIN - FUJEIRA STORE
+============================ */
+/* Base */
+/* BODY */
+body {
+  background: radial-gradient(circle at top left, #20252b, #050608);
+  color: #f8f9fa;
+  font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  padding-top: 70px;
+}
+
+.section-title {
+  font-family: "Bebas Neue", system-ui, sans-serif;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.text-light-50 {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.page {
+  padding-top: 96px; /* altura real del navbar */
+  background: #000;
+  color: #fff;
+}
+
+.page p,
+.page li,
+.page span {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ===========================
+   FAQS PAGE — FUJEIRA
+=========================== */
+.faqs-page .section-faqs {
+  padding-top: 120px;
+  padding-bottom: 100px;
+}
+.faqs-page {
+  /* ACCORDION BASE */
+}
+.faqs-page .accordion,
+.faqs-page .accordion-item {
+  background: #0d0f12;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+}
+.faqs-page .accordion-item {
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+.faqs-page {
+  /* BOTÓN */
+}
+.faqs-page .accordion-button {
+  background: #0d0f12;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 1.1rem 1.3rem;
+  transition: 0.25s ease;
+}
+.faqs-page .accordion-button::after {
+  filter: invert(1);
+  opacity: 0.7;
+}
+.faqs-page .accordion-button:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+.faqs-page .accordion-button:not(.collapsed) {
+  background: #111;
+  color: #CCFF00;
+}
+.faqs-page {
+  /* BODY */
+}
+.faqs-page .accordion-body {
+  background: #0d0f12;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  padding: 1.2rem 1.4rem 1.4rem;
+}
+.faqs-page .accordion-body strong {
+  color: #fff;
+  font-weight: 600;
+}
+.faqs-page {
+  /* SUBTÍTULOS */
+}
+.faqs-page .text-muted {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+/* ============================
+   MAIN - FUJEIRA STORE
+============================ */
+/* Base */
+/* ============================
+   MAIN - FUJEIRA STORE
+============================ */
+/* Base */
+/* ===========================
+   ITEM CARRITO
+=========================== */
+.cart-item {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: 1rem;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  align-items: start;
+}
+
+/* Imagen */
+.cart-item-img {
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Info */
+.cart-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.cart-item-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.cart-item-size {
+  font-size: 0.8rem;
+  opacity: 0.65;
+}
+
+.cart-item-price {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-top: 0.2rem;
+}
+
+/* ===========================
+   CANTIDAD
+=========================== */
+.cart-qty {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.qty-btn {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.qty-btn:hover {
+  border-color: #CCFF00;
+  color: #CCFF00;
+}
+
+.cart-qty span {
+  min-width: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* ===========================
+   ELIMINAR
+=========================== */
+.cart-remove {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.55);
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.cart-remove:hover {
+  border-color: #ff6b6b;
+  color: #ff6b6b;
+}
+
+/* ===========================
+   TOTAL
+=========================== */
+#cartTotal {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+/* ===========================
+   CHECKOUT ACTIONS
+=========================== */
+.checkout-actions {
+  margin-top: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* CTA Mercado Pago */
+.checkout-actions .cta-fujeira-outline {
+  width: 100%;
+  justify-content: center;
+  padding: 0.65rem 1.4rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+}
+
+/* Texto explicativo */
+.checkout-note {
+  max-width: 320px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* Separador */
+.checkout-divider {
+  text-align: center;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  opacity: 0.35;
+  margin: 0.4rem 0;
+}
+
+/* CTA WhatsApp */
+.checkout-actions .cta-fujeira {
+  width: 100%;
+  justify-content: center;
+  padding: 0.9rem 1.6rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+}
+
+/* Iconos en CTA */
+.checkout-actions i {
+  font-size: 0.9rem;
+  margin-right: 0.45rem;
+}
+
+/* =========================
+   CTAs FORMULARIO CHECKOUT
+========================= */
+/* CTA principal */
+#sendOrderBtn {
+  padding: 14px 20px;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+}
+
+/* CTA secundario */
+#goToMPBtn {
+  padding: 11px 20px;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  opacity: 0.9;
+}
+
+/* ===========================
+   BOTONES DE SELECCIÓN (TALLE / MARCO)
+=========================== */
+.size-btn,
+.marco-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.85);
+  padding: 0.45rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+  min-width: 64px;
+  text-align: center;
+}
+.size-btn:hover,
+.marco-btn:hover {
+  border-color: #CCFF00;
+  color: #CCFF00;
+}
+.size-btn.active,
+.marco-btn.active {
+  background: #CCFF00;
+  border-color: #CCFF00;
+  color: #000;
+  font-weight: 600;
+}
+
+/* ===========================
+   HERO HOME
+=========================== */
+.hero-photo {
+  position: relative;
+  height: 70vh;
+  min-height: 460px;
+  max-height: 680px;
+  overflow: hidden;
+  color: #fff;
+}
+@media (max-width: 992px) {
+  .hero-photo {
+    height: 70vh;
+  }
+}
+@media (max-width: 768px) {
+  .hero-photo {
+    height: 65vh;
+  }
+}
+@media (max-width: 480px) {
+  .hero-photo {
+    height: 60vh;
+  }
+}
+
+/* ───────────────────────────
+   SLIDE 1 — DIABLOS ROJOS
+─────────────────────────── */
+.hero-slide--diablos {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0;
+  display: flex;
+  align-items: flex-end;
+  animation: heroSlide 18s infinite ease-in-out;
+  animation-delay: 0s;
+  overflow: hidden;
+  background-image: url("../assets/img/hero_diablosrojos.jpeg");
+  background-size: 60%;
+  background-position: 40% 25%;
+  background-repeat: no-repeat;
+}
+.hero-slide--diablos::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.5) 45%, rgba(0, 0, 0, 0.1) 100%), linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 50%);
+  z-index: 1;
+  pointer-events: none;
+}
+.hero-slide--diablos::after {
+  display: none;
+}
+
+.hero-slide__bg-img {
+  position: absolute;
+  right: 0;
+  top: -8%;
+  height: 100%;
+  width: auto;
+  z-index: 0;
+  filter: saturate(0.9) contrast(1.05);
+  mask-image: linear-gradient(to right, transparent 0%, black 20%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%);
+}
+
+.hero-slide__photo {
+  display: none;
+}
+
+.hero-slide__content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  padding: 0 3rem 2.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 6rem 3rem 2rem 3rem;
+  gap: 4px;
+  height: 100%;
+}
+
+.hero-slide__tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #cc1a1a;
+  margin-bottom: 0;
+}
+
+.hero-slide__title {
+  font-family: "Bebas Neue", system-ui, sans-serif;
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  line-height: 1;
+  color: #f5f0ee;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.6);
+  margin: 0.4rem 0 0.8rem;
+}
+.hero-slide__title span {
+  color: #cc1a1a;
+}
+
+.hero-slide__subtitle {
+  font-family: "Bebas Neue", system-ui, sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 5px;
+  color: #c4b8b8;
+  text-transform: uppercase;
+  margin: 0;
+  margin-bottom: 0.5rem;
+}
+
+.hero-slide__divider {
+  width: 48px;
+  height: 2px;
+  background: #cc1a1a;
+  margin: 0.3rem 0 0.5rem;
+}
+
+.hero-slide__desc {
+  font-size: 0.9rem;
+  color: #a09090;
+  line-height: 1.5;
+  max-width: 380px;
+  margin: 0;
+  margin-bottom: 0.8rem;
+}
+
+.hero-slide__cta {
+  display: inline-flex;
+  position: relative;
+  z-index: 4;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+  background: #cc1a1a;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 12px 28px;
+  white-space: nowrap;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  transition: background 0.3s ease;
+}
+.hero-slide__cta:hover {
+  background: #a81212;
+}
+
+/* ───────────────────────────
+   SLIDES 2 y 3 — backgrounds rotativos
+─────────────────────────── */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center 20%;
+  opacity: 0;
+  animation: heroSlide 18s infinite ease-in-out;
+}
+@media (max-width: 768px) {
+  .hero-bg {
+    background-position: center 25%;
+  }
+}
+@media (max-width: 480px) {
+  .hero-bg {
+    background-position: center 30%;
+  }
+}
+
+.hero-bg-2 {
+  background-image: url("../assets/catalogo/retro_series/las_sin_permiso_version1/sinpermisov1.png");
+  animation-delay: 6s;
+  filter: brightness(0.55);
+}
+
+.hero-bg-3 {
+  background-image: url("../assets/catalogo/retro_series/cuervos/cuervos02.png");
+  animation-delay: 12s;
+  filter: brightness(0.5);
+}
+
+/* OVERLAY — slides 2 y 3 */
+.hero-overlay {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(0, 0, 0, 0.85), transparent 55%), linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.1));
+  z-index: 1;
+  pointer-events: none;
+  animation: heroSlideDouble 18s infinite ease-in-out;
+  animation-delay: 6s;
+}
+
+/* CONTENIDO genérico (slides 2 y 3) */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 560px;
+  opacity: 0;
+  animation: heroSlideDouble 18s infinite ease-in-out;
+  animation-delay: 6s;
+}
+.hero-content .hero-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+.hero-content .hero-title {
+  font-family: "Bebas Neue", system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
+  margin: 0.6rem 0 0.2rem;
+}
+.hero-content .hero-tagline {
+  font-family: "Bebas Neue", system-ui, sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: clamp(1.3rem, 3vw, 2rem);
+  margin-bottom: 1rem;
+  color: #CCFF00;
+}
+.hero-content .hero-tagline span {
+  display: block;
+}
+.hero-content .hero-subtitle {
+  max-width: 26rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1rem;
+}
+
+/* ANIMACIONES */
+@keyframes heroSlide {
+  0%, 30% {
+    opacity: 1;
+  }
+  33%, 100% {
+    opacity: 0;
+  }
+}
+@keyframes heroSlideDouble {
+  0%, 65% {
+    opacity: 1;
+  }
+  67%, 100% {
+    opacity: 0;
+  }
+}
+/* ===========================
+   CTA GLOBAL FUJEIRA
+   =========================== */
+.cta-fujeira {
+  background: #CCFF00;
+  color: #000;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.85rem 2rem;
+  border-radius: 999px;
+  transition: 0.25s ease;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+.cta-fujeira:hover {
+  background: rgb(209.1, 255, 25.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
+}
+
+/* ==========================
+   CTA CARD — FUJEIRA (ÚNICO)
+========================== */
+.cta-fujeira-outline {
+  text-decoration: none;
+  background: transparent;
+  color: #CCFF00;
+  border: 1.5px solid rgba(204, 255, 0, 0.6);
+  border-radius: 999px;
+  padding: 0.75rem 2.4rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cta-fujeira-outline:hover {
+  background: #CCFF00;
+  color: #000;
+  border-color: #CCFF00;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(204, 255, 0, 0.35);
+}
+
+/* ===========================
+   CTA CARD — MOBILE FIX
+=========================== */
+@media (max-width: 576px) {
+  .catalog-product-card .cta-fujeira-outline {
+    width: 100%;
+    padding: 0.55rem 0;
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    border-radius: 12px;
+    margin-top: 0.75rem;
+  }
+}
+/* ===========================
+   CTA CARRITO (NAVBAR)
+   =========================== */
+.navbar-fujeira .cta-fujeira-outline {
+  height: 38px;
+  padding: 0 18px;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1;
+}
+
+.navbar-fujeira .cta-fujeira-outline .badge {
+  font-size: 0.75rem;
+  padding: 4px 8px;
+}
+
+/* ===========================
+   NAVBAR
+   =========================== */
+.logo-fujeira {
+  height: 64px;
+  width: auto;
+  transition: 0.2s ease;
+}
+.logo-fujeira:hover {
+  transform: scale(1.04);
+}
+
+.navbar-fujeira .nav-link:hover {
+  color: #CCFF00;
+}
+
+/* ===========================
+   INSTAGRAM STRIP
+   =========================== */
+.insta-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.75rem;
+}
+
+.insta-item img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: 0.3s;
+}
+
+.insta-item:hover img {
+  transform: scale(1.08);
+}
+
+@media (max-width: 576px) {
+  .insta-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.4rem;
+  }
+}
+@media (max-width: 576px) {
+  .insta-item {
+    aspect-ratio: 1/1;
+  }
+  .insta-item img {
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+}
+@media (hover: hover) {
+  .insta-item:hover img {
+    transform: scale(1.08);
+  }
+}
+/* ===========================
+   BOTÓN FLOTANTE WHATSAPP
+   =========================== */
+.btn-whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #25D366;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  z-index: 999;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: 0.2s;
+}
+.btn-whatsapp:hover {
+  transform: scale(1.08);
+}
+
+/* ===========================
+   CARRITO — IMÁGENES PEQUEÑAS
+   =========================== */
+.cart-thumb {
+  width: 64px !important;
+  height: 64px !important;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+/* ===========================
+   CHECKOUT — BLOQUE FINAL
+   =========================== */
+.cart-final-message {
+  background: #0d0f12;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.2rem;
+  padding: 1.8rem 1.4rem;
+  margin-top: 1.2rem;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+}
+
+.cart-msg-title {
+  font-family: "Bebas Neue", system-ui, sans-serif;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #CCFF00;
+}
+
+.cart-msg-text {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.45;
+}
+
+/* ===========================
+   FORMULARIO CHECKOUT
+   =========================== */
+#userDataForm {
+  background: #0d0f12;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.2rem;
+  padding: 1.4rem;
+  padding-top: 3.5rem;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+}
+#userDataForm .form-control {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+#userDataForm .form-control::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+#userDataForm .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+#userDataForm .form-control:focus {
+  border-color: #CCFF00;
+  box-shadow: 0 0 0 0.15rem rgba(214, 255, 65, 0.25);
+}
+
+.cart-final-message--compact {
+  margin-bottom: 1.2rem;
+  padding: 1rem 1.2rem;
+}
+.cart-final-message--compact .cart-msg-title {
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+}
+.cart-final-message--compact .cart-msg-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+.cart-final-message--compact .cart-msg-list li {
+  margin-bottom: 0.35rem;
+}
+
+/* ===========================
+   TOAST — POPUP FUJEIRA
+   =========================== */
+#toastAdded {
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+}
+
+/* ===========================
+   CARRITO — IMÁGENES
+=========================== */
+.cart-item-img {
+  width: 64px;
+  height: 64px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+/* ===========================
+   MP-Note
+=========================== */
+.checkout-mp-note {
+  margin-top: 0.75rem;
+  text-align: center;
+  font-size: 1rem; /* ⬅ más grande */
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.4;
+}
+
+/* =========================
+   CTAs FORMULARIO CHECKOUT
+========================= */
+#userDataForm #sendOrderBtn {
+  height: auto;
+  line-height: normal;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+}
+
+#userDataForm #goToMPBtn {
+  height: auto;
+  line-height: normal;
+  padding: 9px 16px;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+/* Layout */
+/* ============================
+   MAIN - FUJEIRA STORE
+============================ */
+/* Base */
+/* =====================================
+   NAVBAR FUJEIRA 
+   ===================================== */
+.navbar-fujeira {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  /* -----------------------------
+     LOGO
+     ----------------------------- */
+}
+.navbar-fujeira .navbar-brand img {
+  height: 68px;
+  width: auto;
+  transition: transform 0.2s ease;
+}
+.navbar-fujeira .navbar-brand img:hover {
+  transform: scale(1.04);
+}
+.navbar-fujeira {
+  /* -----------------------------
+     LINKS DEL NAV
+     ----------------------------- */
+}
+.navbar-fujeira .nav-link {
+  color: #f8f9fa;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.95rem;
+}
+.navbar-fujeira .nav-link:hover {
+  color: #CCFF00;
+}
+.navbar-fujeira {
+  /* -----------------------------
+     BADGE del carrito
+     ----------------------------- */
+}
+.navbar-fujeira #cartCount {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.45rem;
+}
+.navbar-fujeira .badge.bg-warning {
+  background-color: #CCFF00;
+  color: #000;
+}
+.navbar-fujeira {
+  /* -----------------------------
+     DROPDOWN
+     ----------------------------- */
+}
+.navbar-fujeira .dropdown-menu {
+  background: #0e0e0e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.navbar-fujeira .dropdown-menu .dropdown-item {
+  color: #fff;
+  font-size: 0.9rem;
+}
+.navbar-fujeira .dropdown-menu .dropdown-item:hover {
+  background: #CCFF00;
+  color: #000;
+}
+
+/* ============================
+   MAIN - FUJEIRA STORE
+============================ */
+/* Base */
+/* ==========================================
+   FOOTER — FUJEIRA Retro Store
+   ========================================== */
+.footer-fujeira {
+  background: #000;
+  padding: 2.5rem 0 1.5rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.92rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  /* -----------------------------
+     LOGO
+     ----------------------------- */
+}
+.footer-fujeira .footer-logo {
+  height: 56px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.4));
+  opacity: 0.85;
+  transition: opacity 0.25s ease;
+}
+.footer-fujeira .footer-logo:hover {
+  opacity: 1;
+}
+.footer-fujeira {
+  /* -----------------------------
+     LINKS ÚTILES
+     ----------------------------- */
+}
+.footer-fujeira .footer-link {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 0.9rem;
+  display: block;
+  padding: 0.2rem 0;
+}
+.footer-fujeira .footer-link:hover {
+  color: #CCFF00;
+}
+.footer-fujeira .footer-nav a.footer-link {
+  white-space: nowrap;
+  font-size: 0.9rem;
+}
+.footer-fujeira .footer-nav {
+  gap: 1.2rem;
+}
+.footer-fujeira footer-links-line a.footer-link {
+  white-space: nowrap;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+}
+.footer-fujeira footer-links-line a.footer-link:hover {
+  color: #CCFF00;
+}
+.footer-fujeira footer-links-line {
+  gap: 1.75rem;
+}
+.footer-fujeira {
+  /* -----------------------------
+     REDES SOCIALES
+     ----------------------------- */
+}
+.footer-fujeira .footer-social {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.75);
+  transition: 0.25s ease;
+}
+.footer-fujeira .footer-social:hover {
+  color: #CCFF00;
+  transform: translateY(-2px);
+}
+.footer-fujeira {
+  /* -----------------------------
+     CLAIM (frase del Diego)
+     ----------------------------- */
+}
+.footer-fujeira .footer-claim {
+  font-size: 0.85rem;
+  opacity: 0.85;
+  line-height: 1.4;
+}
+.footer-fujeira {
+  /* -----------------------------
+     COPYRIGHT
+     ----------------------------- */
+}
+.footer-fujeira .footer-copy {
+  margin-top: 2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  font-size: 0.82rem;
+  opacity: 0.75;
+}
+.footer-fujeira {
+  /* -----------------------------
+     RESPONSIVE
+     ----------------------------- */
+}
+@media (max-width: 768px) {
+  .footer-fujeira {
+    text-align: center;
+  }
+  .footer-fujeira .footer-claim {
+    margin-top: 1rem;
+  }
+  .footer-fujeira .footer-logo {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Home */
+/* ============================
+   MAIN - FUJEIRA STORE
+============================ */
+/* Base */
+/* ================================
+   UTILIDADES
+================================ */
+.text-light-50 {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.section-title {
+  font-family: "Bebas Neue", system-ui, sans-serif;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+/* ================================
+   BODY
+================================ */
+body {
+  background: radial-gradient(circle at top left, #20252b, #050608);
+  color: #f8f9fa;
+  font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  padding-top: 70px;
+}
+
+/* ================================
+   HERO
+================================ */
+.hero-photo {
+  position: relative;
+  height: 100vh;
+  min-height: 560px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+@media (max-width: 992px) {
+  .hero-photo {
+    height: 80vh;
+    background-position: top center;
+  }
+}
+@media (max-width: 768px) {
+  .hero-photo {
+    height: 70vh;
+    padding-inline: 1.5rem;
+    background-position: top;
+  }
+}
+@media (max-width: 480px) {
+  .hero-photo {
+    height: 60vh;
+  }
+}
+.hero-photo .hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.15));
+}
+.hero-photo .hero-content {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  max-width: 540px;
+}
+.hero-photo .hero-content .hero-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+.hero-photo .hero-content h1 {
+  font-family: "Bebas Neue", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: clamp(2rem, 6vw, 3.6rem);
+  line-height: 1.1;
+  margin: 0.5rem 0 1rem;
+}
+.hero-photo .hero-content .hero-subtitle {
+  max-width: 26rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: clamp(0.9rem, 3vw, 1rem);
+}
+.hero-photo .hero-content .hero-btn {
+  border-radius: 999px;
+  padding-inline: 2.2rem;
+  font-size: clamp(0.78rem, 2.4vw, 0.9rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+/* ================================
+   BANNER DE FOTOS
+================================ */
+.banner-strip {
+  background: #000;
+}
+.banner-strip .banner-strip-row .banner-tile {
+  position: relative;
+  overflow: hidden;
+  height: 260px;
+}
+.banner-strip .banner-strip-row .banner-tile img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.banner-strip .banner-strip-row .banner-tile:hover img {
+  transform: scale(1.05);
+}
+@media (max-width: 992px) {
+  .banner-strip .banner-strip-row .banner-tile {
+    height: 220px;
+  }
+}
+@media (max-width: 768px) {
+  .banner-strip .banner-strip-row .banner-tile {
+    height: 180px;
+  }
+}
+@media (max-width: 480px) {
+  .banner-strip .banner-strip-row .banner-tile {
+    height: 140px;
+  }
+}
+
+/* ================================
+   DESTACADOS — HOME (solo layout)
+================================ */
+#destacados {
+  background: #000;
+  padding: 4.5rem 0;
+}
+
+#destacados .section-title {
+  margin-bottom: 3rem;
+}
+
+/* Espaciado del grid */
+#destacados .row {
+  row-gap: 2.5rem;
+}
+
+/* Mobile: carrusel horizontal */
+@media (max-width: 768px) {
+  #destacados .row {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    scroll-snap-type: x mandatory;
+  }
+  #destacados .col-6,
+  #destacados .col-md-3 {
+    flex: 0 0 78%;
+    max-width: 78%;
+    scroll-snap-align: start;
+  }
+}
+/* ================================
+   DESTACADOS — variante visual
+================================ */
+#destacados .featured-card {
+  background: radial-gradient(120% 120% at top left, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.95));
+  border-radius: 20px;
+}
+
+/* Imagen distinta SOLO en destacados */
+#destacados .featured-card .catalog-img-wrapper img {
+  height: 260px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  padding: 16px;
+  background: #000;
+}
+
+/* Hover más protagonista */
+#destacados .featured-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* ================================
+   CÓMO FUNCIONA — HOME
+================================ */
+.section-how {
+  background: #0d0f12;
+  padding: 4rem 0;
+  color: #fff;
+}
+
+/* Header */
+.howto-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+@media (max-width: 768px) {
+  .howto-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.howto-title {
+  font-family: "Bebas Neue", system-ui, sans-serif;
+  letter-spacing: 0.14em;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.howto-subtitle {
+  max-width: 520px;
+  opacity: 0.75;
+  line-height: 1.5;
+}
+
+/* Grid horizontal */
+.howto-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem;
+}
+@media (max-width: 992px) {
+  .howto-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+@media (max-width: 576px) {
+  .howto-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Paso */
+.howto-step {
+  text-align: left;
+  padding: 1.5rem 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+}
+
+.howto-step:hover {
+  transform: translateY(-6px);
+  border-color: #CCFF00;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), inset 0 0 0 1px rgba(204, 255, 0, 0.15);
+  background: linear-gradient(180deg, rgba(204, 255, 0, 0.06), rgba(0, 0, 0, 0));
+}
+
+.howto-step .step-number {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.howto-step:hover .step-number {
+  opacity: 0.9;
+  transform: translateX(4px);
+}
+
+/* Número */
+.step-number {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  color: #CCFF00;
+}
+
+/* Título */
+.step-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+/* Bajada */
+.step-caption {
+  font-size: 0.9rem;
+  opacity: 0.6;
+  margin-top: 0.25rem;
+}
+
+/* Destacados */
+/* ============================
+   MAIN - FUJEIRA STORE
+============================ */
+/* Base */
+/* ================================
+   DESTACADOS — HOME
+================================ */
+#destacados {
+  background: radial-gradient(circle at center, #0a0a0a, #000);
+  padding: 5.5rem 0;
+}
+#destacados .section-title {
+  margin-bottom: 3.5rem;
+  letter-spacing: 0.18em;
+}
+#destacados {
+  /* ==========================
+     GRID
+  ========================== */
+}
+#destacados .row {
+  row-gap: 3rem;
+}
+#destacados {
+  /* ==========================
+     CARD
+  ========================== */
+}
+#destacados .catalog-product-card {
+  position: relative;
+  background: radial-gradient(140% 140% at top left, rgba(255, 255, 255, 0.07), rgba(0, 0, 0, 0.95));
+  border-radius: 1rem;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.45s ease, box-shadow 0.45s ease, border-color 0.45s ease;
+  border: 3px solid rgba(255, 255, 255, 0.14);
+  overflow: hidden;
+}
+#destacados .catalog-product-card:hover {
+  transform: translateY(-12px);
+  border-color: rgba(204, 255, 0, 0.6);
+  outline: 2px solid rgba(204, 255, 0, 0.35);
+  outline-offset: -2px;
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.65);
+}
+#destacados .catalog-product-card:hover::before {
+  border-color: rgba(204, 255, 0, 0.55);
+}
+#destacados {
+  /* ==========================
+     IMAGEN (PROTAGONISTA)
+  ========================== */
+}
+#destacados .catalog-img-wrapper {
+  height: 340px;
+  background: radial-gradient(circle at top, #111, #000);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#destacados .catalog-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center top;
+     object-position: center top;
+  transition: transform 0.6s ease;
+}
+#destacados .catalog-product-card:hover img {
+  transform: scale(1.06);
+}
+#destacados {
+  /* ==========================
+     INFO
+  ========================== */
+}
+#destacados .catalog-info {
+  padding: 1rem 1.1rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex-grow: 1;
+}
+#destacados .catalog-product-name {
+  font-family: "Bebas Neue", system-ui, sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: #fff;
+  margin-bottom: 0.6rem;
+}
+#destacados .catalog-product-category {
+  font-size: 0.65rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  opacity: 0.45;
+  margin-bottom: 1.6rem;
+}
+#destacados {
+  /* ==========================
+     CTA CARD
+  ========================== */
+}
+#destacados #destacados .cta-fujeira-outline {
+  margin-top: auto;
+}
+#destacados {
+  /* ==========================
+     CTA SECCIÓN
+  ========================== */
+}
+#destacados .cta-fujeira {
+  margin-top: 4rem;
+}
+
+/* ================================
+   MOBILE — CARRUSEL
+================================ */
+@media (max-width: 768px) {
+  #destacados .row {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 1.5rem;
+    scroll-snap-type: x mandatory;
+  }
+  #destacados .col-6,
+  #destacados .col-md-3 {
+    flex: 0 0 82%;
+    max-width: 82%;
+    scroll-snap-align: center;
+  }
+}
+/* ===========================
+   CUADROS DESTACADOS – HOME
+=========================== */
+.cuadro-card {
+  background: #0d0d0d;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 2.5px solid rgba(255, 255, 255, 0.22);
+  transition: transform 0.45s ease, box-shadow 0.45s ease, border-color 0.45s ease;
+}
+
+.cuadro-card img {
+  width: 100%;
+  height: 360px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  display: block;
+}
+
+.cuadro-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(204, 255, 0, 0.55);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.7), 0 0 0 6px rgba(204, 255, 0, 0.08);
+}
+
+.cuadro-card img {
+  transition: transform 0.6s ease;
+}
+
+.cuadro-card:hover img {
+  transform: scale(1.02);
+}
+
+/* ===========================
+   INFO CUADROS
+=========================== */
+.cuadro-card .catalog-info {
+  padding: 1.4rem 1.4rem 2rem;
+}
+
+.cuadro-card .cta-fujeira-outline {
+  margin-top: 1.6rem;
+}
+
+.cuadro-card .catalog-product-name {
+  font-family: "Bebas Neue", system-ui, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: 0.4rem;
+  margin-bottom: 0.2rem;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .cuadro-card img {
+    height: 260px;
+  }
+}
+@media (max-width: 768px) {
+  .cuadro-card .catalog-product-name {
+    font-size: 1.05rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.8rem;
+  }
+}
+@media (max-width: 768px) {
+  .cuadro-card {
+    border-width: 2px;
+  }
+}
+/* Nosotros*/
+/* ============================
+   MAIN - FUJEIRA STORE
+============================ */
+/* Base */
+/* ================================
+   NOSOTROS — MANIFIESTO FUJEIRA
+================================ */
+.inner-page {
+  background: radial-gradient(140% 120% at top center, #181818 0%, #000 70%);
+}
+
+/* ================================
+   HEADER — MANIFIESTO
+================================ */
+.inner-page header {
+  max-width: 760px;
+  margin-inline: auto;
+  margin-bottom: 4rem;
+}
+.inner-page header .section-title {
+  font-family: "Bebas Neue", system-ui, sans-serif;
+  font-size: clamp(2rem, 5vw, 2.6rem);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.inner-page header p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+/* ================================
+   CUERPO — TEXTO
+================================ */
+.inner-page .row {
+  max-width: 1100px;
+  margin-inline: auto;
+}
+
+/* Columna texto */
+.inner-page .col-lg-6:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+.inner-page .col-lg-6:first-child p {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  opacity: 0.75;
+}
+.inner-page .col-lg-6:first-child {
+  /* Golpe de manifiesto */
+}
+.inner-page .col-lg-6:first-child p:first-child {
+  font-size: 1.1rem;
+  opacity: 0.95;
+  font-weight: 500;
+}
+
+/* ================================
+   BLOQUE CREENCIA
+================================ */
+.inner-page .col-lg-6:first-child::after {
+  content: "No vendemos camisetas. Curamos historia.";
+  display: block;
+  margin-top: 2.5rem;
+  font-family: "Bebas Neue", system-ui, sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #CCFF00;
+  opacity: 0.9;
+}
+
+/* ================================
+   IMAGEN — ÍCONO
+================================ */
+.inner-page .col-lg-6 img {
+  border-radius: 1rem;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  filter: saturate(0.95) contrast(1.05);
+}
+
+.inner-page .col-lg-6 img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 60px 120px rgba(0, 0, 0, 0.9);
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .inner-page header {
+    margin-bottom: 3rem;
+  }
+  .inner-page header .section-title {
+    letter-spacing: 0.22em;
+  }
+  .inner-page .col-lg-6:first-child::after {
+    font-size: 1rem;
+    letter-spacing: 0.18em;
+  }
+}
+/* Faqs*/
+/* ============================
+   MAIN - FUJEIRA STORE
+============================ */
+/* Base */
+/* ================================
+   FAQS — FUJEIRA
+================================ */
+.faqs-page {
+  background: radial-gradient(140% 120% at top center, #181818 0%, #000 70%);
+  color: #fff;
+}
+
+/* ================================
+   SECCIÓN
+================================ */
+.section-faqs {
+  padding: 6rem 0 4rem;
+}
+
+/* ================================
+   HEADER
+================================ */
+.section-faqs .section-title {
+  font-family: "Bebas Neue", system-ui, sans-serif;
+  font-size: clamp(2rem, 5vw, 2.6rem);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.section-faqs > .container > p {
+  max-width: 680px;
+  margin-inline: auto;
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.75;
+}
+
+/* ================================
+   ACORDEÓN
+================================ */
+.faqs-page .accordion {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.faqs-page .accordion-item {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+/* ================================
+   PREGUNTA
+================================ */
+.faqs-page .accordion-button {
+  background: transparent;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 1.4rem 1.6rem;
+  box-shadow: none;
+}
+
+.faqs-page .accordion-button:not(.collapsed) {
+  background: rgba(204, 255, 0, 0.06);
+  color: #CCFF00;
+}
+
+.faqs-page .accordion-button::after {
+  filter: invert(1);
+  opacity: 0.7;
+}
+
+/* ================================
+   RESPUESTA
+================================ */
+.faqs-page .accordion-body {
+  padding: 1.4rem 1.6rem 1.8rem;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  opacity: 0.75;
+}
+
+/* ================================
+   CTA FINAL
+================================ */
+.section-faqs .text-center.mt-5 {
+  max-width: 720px;
+  margin-inline: auto;
+  margin-top: 4rem !important;
+  opacity: 0.85;
+}
+
+/* ================================
+   MOBILE
+================================ */
+@media (max-width: 768px) {
+  .section-faqs {
+    padding: 5rem 0 3rem;
+  }
+  .faqs-page .accordion-button {
+    font-size: 0.9rem;
+  }
+}
+/* contacto */
+/* ============================
+   MAIN - FUJEIRA STORE
+============================ */
+/* Base */
+/* ===========================
+   CONTACT PAGE — FUJEIRA
+=========================== */
+.contact-page {
+  background: #000;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+}
+.contact-page .section-contact {
+  padding-top: 140px;
+  padding-bottom: 100px;
+}
+.contact-page .section-title {
+  color: #fff;
+}
+.contact-page p {
+  color: rgba(255, 255, 255, 0.85);
+}
+.contact-page {
+  /* 🔑 CLAVE: Bootstrap text-muted */
+}
+.contact-page .text-muted {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+.contact-page {
+  /* Mail */
+}
+.contact-page .contact-mail {
+  color: #CCFF00;
+  text-decoration: none;
+  font-weight: 500;
+}
+.contact-page .contact-mail:hover {
+  text-decoration: underline;
+}
+
+/* Catálogo */
+/* ============================
+   MAIN - FUJEIRA STORE
+============================ */
+/* Base */
+.catalog-page {
+  /* ==========================
+     CARD
+  ========================== */
+}
+.catalog-page .catalog-product-card {
+  background: radial-gradient(120% 120% at top left, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0.9));
+  border-radius: 1rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: 0.3s ease;
+  overflow: visible;
+}
+.catalog-page .catalog-product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+}
+.catalog-page {
+  /* ==========================
+     IMAGEN
+  ========================== */
+}
+.catalog-page .catalog-img-wrapper {
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  background: #000;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+.catalog-page .catalog-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center top;
+     object-position: center top;
+  display: block;
+}
+.catalog-page {
+  /* ==========================
+     INFO
+  ========================== */
+}
+.catalog-page .catalog-info {
+  padding: 1.3rem 1.2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  flex-grow: 1;
+  text-align: center;
+}
+.catalog-page .catalog-product-name {
+  font-family: "Bebas Neue", system-ui, sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.06em;
+  color: #fff;
+  margin-bottom: 0.3rem;
+}
+.catalog-page .catalog-product-category {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 1rem;
+}
+
+/* ==========================
+   CTA — CATÁLOGO (SOLO POSICIÓN)
+========================== */
+.catalog-page .catalog-info {
+  display: flex;
+  flex-direction: column;
+}
+.catalog-page .cta-fujeira-outline {
+  margin-top: auto;
+  align-self: center;
+}
+
+/* ============================
+   MAIN - FUJEIRA STORE
+============================ */
+/* Base */
+.product-card {
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  border-color: #CCFF00;
+}
+.product-card .card-img-top-wrapper {
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+.product-card .card-img-top {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.product-card .card-body {
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem;
+}
+.product-card .card-title {
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+.product-card .text-muted {
+  color: rgba(255, 255, 255, 0.6) !important;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+}
+.product-card .fw-bold {
+  color: #fff;
+  font-size: 0.9rem;
+}
+.product-card .btn {
+  margin-top: auto;
+}
+
+.product-card .btn {
+  background-color: #000;
+  border: 1px solid #CCC000;
+  color: #fff;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.product-card .btn:hover {
+  background-color: #CCFF00;
+  color: #000;
+  border-color: #CCFF00;
+}
+.product-card .product-card {
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  height: 100%;
+}
+.product-card .product-card:hover {
+  transform: translateY(-4px);
+  border-color: #CCFF00;
+}
+.product-card .product-card .card-img-top-wrapper {
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+.product-card .product-card .card-img-top {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.product-card .product-card .card-body {
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem;
+}
+.product-card .product-card .card-title {
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+.product-card .product-card .text-muted {
+  color: rgba(255, 255, 255, 0.6) !important;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+}
+.product-card .product-card .cta-fujeira-outline {
+  margin-top: auto;
+  text-decoration: none;
+}
+
+/* Producto */
+/* ============================
+   MAIN - FUJEIRA STORE
+============================ */
+/* Base */
+/* =========================================
+   PRODUCTO INDIVIDUAL — PAGE LAYOUT
+========================================= */
+.product-page {
+  padding-top: 110px;
+  padding-bottom: 60px;
+  color: #f8f9fa;
+}
+
+/* ===========================
+   TÍTULO + CATEGORÍA
+=========================== */
+.product-title {
+  font-family: "Bebas Neue", system-ui, sans-serif;
+  font-size: 2.3rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.product-category {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  letter-spacing: 0.08em;
+}
+
+/* ===========================
+   DESCRIPCIÓN
+=========================== */
+.product-desc {
+  opacity: 0.9;
+  font-size: 1rem;
+  line-height: 1.45;
+  margin: 15px 0 25px 0;
+}
+
+/* ===========================
+   LISTA DE TALLES
+=========================== */
+.sizes-list {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.size-btn {
+  background: #222;
+  color: #fff;
+  border: 1px solid #444;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.size-btn:hover {
+  background: #CCFF00;
+  color: #000;
+  border-color: #CCFF00;
+}
+
+/* Estado activo */
+.size-btn.active {
+  background: #CCFF00;
+  color: #000 !important;
+  border-color: #CCFF00 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 0 14px rgba(214, 255, 65, 0.35);
+}
+
+/* ===========================
+   PRECIO
+=========================== */
+.price-text {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+/* ===========================
+   CTA LOCAL DEL PRODUCTO
+=========================== */
+.cta-product {
+  padding: 12px 20px;
+  border-radius: 50px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  background: #CCFF00;
+  color: #000;
+  display: inline-block;
+  text-transform: uppercase;
+  transition: 0.2s ease;
+}
+.cta-product:hover {
+  background: #e6ff4d;
+  transform: translateY(-2px);
+}
+
+/* ===========================
+   GALERÍA DE IMÁGENES
+=========================== */
+.product-gallery {
+  width: 100%;
+}
+
+.product-main-img {
+  width: 100%;
+  border-radius: 14px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.product-thumbs {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+.product-thumbs img {
+  width: 70px;
+  height: 70px;
+  border-radius: 8px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: 0.2s ease;
+}
+.product-thumbs img:hover {
+  opacity: 1;
+  transform: scale(1.04);
+}
+
+/* =========================
+   CTAs FORMULARIO CHECKOUT
+========================= */
+#userDataForm .cta-fujeira {
+  height: auto;
+  line-height: normal;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+}
+
+#userDataForm .cta-fujeira-outline {
+  height: auto;
+  line-height: normal;
+  padding: 9px 16px;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+/* ============================
+   MAIN - FUJEIRA STORE
+============================ */
+/* Base */
+/* =========================================
+   PRODUCTO — GALERÍA (Imagen Principal + Thumbs)
+========================================= */
+/* IMAGEN PRINCIPAL */
+.product-main-img {
+  width: 100%;
+  border-radius: 12px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  background: #000;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+}
+
+/* MINIATURAS */
+.product-thumbs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.product-thumb {
+  width: 80px;
+  height: 80px;
+  border-radius: 6px;
+  background: #000;
+  -o-object-fit: cover;
+     object-fit: cover;
+  cursor: pointer;
+  transition: 0.2s ease;
+  border: 2px solid transparent;
+}
+.product-thumb:hover {
+  border-color: #CCFF00;
+  transform: scale(1.05);
+}
+
+/* ============================
+   MAIN - FUJEIRA STORE
+============================ */
+/* Base */
+/* ===========================
+   PRODUCTOS RELACIONADOS
+=========================== */
+.related-section {
+  margin-top: 80px;
+}
+.related-section h3 {
+  font-family: "Bebas Neue", system-ui, sans-serif;
+  font-size: 1.4rem;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.9;
+}
+
+.related-card {
+  display: block;
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.related-card .related-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.25s ease;
+}
+.related-card .related-name {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  line-height: 1.25;
+  color: #fff;
+  opacity: 0.85;
+  /* 🔹 truncado en 2 líneas SIN webkit */
+  max-height: 2.5em;
+  overflow: hidden;
+}
+.related-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+.related-card:hover .related-img {
+  transform: scale(1.03);
+}/*# sourceMappingURL=main.css.map */
