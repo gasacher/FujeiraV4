@@ -1,0 +1,51 @@
+@use "../variables" as v;
+
+.related-section {
+  margin-top: 80px;
+
+  h3 {
+    font-family: v.$font-title;
+    font-size: 1.4rem;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    opacity: .9;
+  }
+}
+
+.related-card {
+  display: block;
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, .03);
+  transition: transform .2s ease, box-shadow .2s ease;
+
+  .related-img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform .25s ease;
+  }
+
+  .related-name {
+    margin-top: 10px;
+    font-size: .85rem;
+    line-height: 1.25;
+    color: #fff;
+    opacity: .85;
+
+    max-height: calc(1.25em * 2);
+    overflow: hidden;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .4);
+  }
+
+  &:hover .related-img {
+    transform: scale(1.03);
+  }
+}

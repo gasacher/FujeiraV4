@@ -1,0 +1,54 @@
+@use "variables" as v;
+
+.navbar-fujeira {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+
+  .navbar-brand img {
+    height: 68px;
+    width: auto;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.04);
+    }
+  }
+
+  .nav-link {
+    color: v.$color-text;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.95rem;
+
+    &:hover {
+      color: v.$color-accent;
+    }
+  }
+
+  #cartCount {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.45rem;
+  }
+
+  .badge.bg-warning {
+    background-color: v.$color-accent;
+    color: #000;
+  }
+
+  .dropdown-menu {
+    background: #0e0e0e;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    .dropdown-item {
+      color: #fff;
+      font-size: 0.9rem;
+
+      &:hover {
+        background: v.$color-accent;
+        color: #000;
+      }
+    }
+  }
+
+}

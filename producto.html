@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Producto | FUJEIRA</title>
+  <meta name="description" id="meta-desc" content="Remeras Fujeira Retro Series y cuadros: fotos, talles, variantes y pago con Mercado Pago. Elegí tu modelo en FUJEIRA." />
+
+  <link rel="stylesheet" href="css/main.css?v=20260414material5" />
+  <link rel="icon" type="image/png" href="assets/img/favicon_fujeira.png" />
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+
+<body class="product-page">
+
+<a class="skip-to-content" href="#productContainer">Saltar al contenido</a>
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-fujeira">
+  <div class="container">
+    <a class="navbar-brand" href="index.html#hero">
+      <img src="assets/img/Logolima_transparente.png" class="logo-fujeira" alt="FUJEIRA" fetchpriority="high" />
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+      <ul class="navbar-nav align-items-lg-center gap-lg-3">
+        <li class="nav-item"><a class="nav-link" href="index.html#hero">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
+        <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+        <li class="nav-item"><a class="nav-link" href="faqs.html">FAQs</a></li>
+        <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+
+        <li class="nav-item ms-lg-2">
+          <button class="cta-fujeira-outline" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas">
+            Carrito <span class="badge bg-warning text-dark" id="cartCount">0</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section class="section-product py-5">
+  <div class="container" id="productContainer"></div>
+</section>
+
+<div class="offcanvas offcanvas-end bg-dark text-light" tabindex="-1" id="cartOffcanvas">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">Tu carrito</h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+  </div>
+
+  <div class="offcanvas-body d-flex flex-column">
+    <div id="cartItems"></div>
+
+    <hr class="border-secondary my-4">
+
+    <p class="text-end fs-5 mb-4">
+      Total: <span id="cartTotal">$0</span>
+    </p>
+
+    <div id="checkoutOptions" class="checkout-actions d-none">
+
+      <a href="#" id="payWithMP" class="cta-fujeira-outline d-flex justify-content-center">
+        <i class="bi bi-credit-card"></i> Pagar con Mercado Pago
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<div id="userDataForm" class="container mt-5 d-none">
+
+  <h4 class="checkout-title mb-4">
+    Te pedimos unos datos para validar tu pedido ⚽
+  </h4>
+
+<form id="checkoutForm" novalidate>
+
+    <div class="mb-2">
+      <label class="form-label" for="userNombre">Nombre</label>
+      <input
+        type="text"
+        id="userNombre"
+        class="form-control"
+        required
+        minlength="2"
+        maxlength="40"
+        autocomplete="given-name"
+      >
+      <div class="invalid-feedback">
+        Ingresá un nombre válido (mín. 2 letras).
+      </div>
+    </div>
+
+    <div class="mb-2">
+      <label class="form-label" for="userApellido">Apellido</label>
+      <input
+        type="text"
+        id="userApellido"
+        class="form-control"
+        required
+        minlength="2"
+        maxlength="40"
+        autocomplete="family-name"
+      >
+      <div class="invalid-feedback">
+        Ingresá un apellido válido (mín. 2 letras).
+      </div>
+    </div>
+
+    <div class="mb-2">
+      <label class="form-label" for="userEmail">Email</label>
+      <input
+        type="email"
+        id="userEmail"
+        class="form-control"
+        required
+        autocomplete="email"
+      >
+      <div class="invalid-feedback">
+        Ingresá un email válido.
+      </div>
+    </div>
+
+    <div class="mb-2">
+      <label class="form-label" for="userTelefono">
+        Teléfono
+      </label>
+    
+      <input
+        type="tel"
+        id="userTelefono"
+        class="form-control"
+        required
+        inputmode="numeric"
+        pattern="[0-9]{10,15}"
+        autocomplete="tel"
+        placeholder="Ej: 1130124589"
+      >
+    
+      <div class="invalid-feedback">
+        Ingresá un teléfono válido (10 a 15 dígitos).
+      </div>
+    
+      <div class="form-text">
+        Solo números. Sin +54, sin espacios ni guiones.
+      </div>
+    </div>
+
+    <div class="mb-2">
+      <label class="form-label" for="userDireccion">Dirección</label>
+      <input
+        type="text"
+        id="userDireccion"
+        class="form-control"
+        required
+        minlength="6"
+        maxlength="80"
+        autocomplete="street-address"
+        placeholder="Calle y número, localidad"
+      >
+      <div class="invalid-feedback">
+        Ingresá una dirección válida (mín. 6 caracteres).
+      </div>
+    </div>
+
+  </form>
+
+  <button id="goToMPBtn" type="button" class="cta-fujeira-outline w-100 mt-3">
+    Ir a Mercado Pago
+  </button>
+
+<p id="mpNote" class="checkout-note text-center mt-2 mp-note">
+    💳 Serás redirigido/a a Mercado Pago para pagar el<br>
+    <strong>monto total de tu pedido</strong>
+  </p>
+
+</div>
+
+<div id="orderSuccess" class="cart-final-message mt-5 p-4 d-none container">
+
+  <p class="cart-msg-title">Pedido registrado ✅</p>
+
+  <p class="cart-msg-text">
+    🆔 <strong>Pedido:</strong>
+    <span id="orderIdText"></span>
+  </p>
+
+  <p class="cart-msg-text">
+    Gracias por elegir <strong>FUJEIRA Retro Store</strong>.
+  </p>
+
+<div id="successMP" class="d-none">
+
+  <p class="cart-msg-text">
+    💳 <strong>Tu pedido fue registrado correctamente.</strong>
+  </p>
+
+  <p class="cart-msg-text">
+    Te enviamos un <strong>mail con el detalle del pedido</strong> y los próximos pasos.
+  </p>
+
+  <p class="cart-msg-text">
+    1️⃣ Ahora podés realizar el pago a través de <strong>Mercado Pago</strong>.
+  </p>
+
+  <hr class="border-secondary my-3">
+
+  <p class="cart-msg-text"><strong>Resumen del pedido</strong></p>
+
+  <div id="successOrderItems">
+    
+  </div>
+
+  <p class="cart-msg-text d-flex justify-content-between fw-bold mt-2">
+    <span>Total</span>
+    <span id="successOrderTotal"></span>
+  </p>
+
+  <p class="cart-msg-text mt-2" style="color:#ccff00;">
+    💳 El pago se realizará en Mercado Pago por el <strong>total de tu pedido</strong>.
+  </p>
+  
+  <p class="cart-msg-text mt-3">
+    2️⃣ Si querés, podés enviarnos el comprobante para <strong>agilizar la confirmación</strong>.
+  </p>
+
+  <a
+    href="https://wa.me/5491130124589?text=Hola! Te envío el comprobante de mi pedido FUJEIRA"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="cta-fujeira-outline w-100 mt-2"
+  >
+    Enviar comprobante por WhatsApp
+    <span class="d-block text-muted mt-1" style="font-size:.75rem;">
+    </span>
+  </a>
+
+</div>
+
+<p class="cart-msg-text mt-4">
+  👉 <strong>¿Querés seguir chusmeando joyitas retro?</strong>
+</p>
+
+<a href="catalogo.html" class="cta-fujeira-outline d-inline-block mt-2">
+  Volver al catálogo
+</a>
+</div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="toastAdded" class="toast bg-danger text-white" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">Seleccioná un talle</div>
+  </div>
+</div>
+
+<a href="https://wa.me/5491130124589" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">
+<i class="bi bi-whatsapp"></i>
+</a>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  (function () {
+    emailjs.init("sSTm1dBUjNtVm8PsD");
+  })();
+</script>
+
+<script type="module" src="js/cart.js?v=20260413h52"></script>
+<script type="module" src="js/products.js?v=20260414material2"></script>
+
+<script type="module">
+  import { createOrder } from "./js/orders.js?v=20260407h1";
+
+  function getVarianteTexto(item) {
+  if (item.marco) return `Marco: ${item.marco}`;
+  if (item.talle) return `Talle: ${item.talle}`;
+  return "";
+}
+
+  function sendConfirmationEmail({ nombre, email, orderId, cart, total }) {
+  const productos = cart
+  .map(item => {
+    const variante = getVarianteTexto(item);
+
+    return `• ${item.nombre}
+Código: ${item.codigo}
+${variante ? variante + " | " : ""}Cant: ${item.cantidad}`;
+  })
+  .join("\n\n");
+
+    return emailjs.send("service_fujeira", "template_pedido", {
+    nombre,
+    email,
+    to_email: email, 
+    order_id: orderId,
+    productos,
+    total: total.toLocaleString("es-AR"),
+  });
+}
+
+  document.addEventListener("DOMContentLoaded", () => {
+
+  // ✅ TOAST GLOBAL
+  window.showToast = (msg = "Seleccioná un talle") => {
+  const el = document.getElementById("toastAdded");
+  if (!el) return;
+
+  const body = el.querySelector(".toast-body");
+  if (body) body.textContent = msg;
+
+  const toast = bootstrap.Toast.getOrCreateInstance(el);
+  toast.show();
+  }; 
+
+    const payWithMP = document.getElementById("payWithMP");
+    const goToMPBtn = document.getElementById("goToMPBtn");
+    const mpNote = document.getElementById("mpNote");
+
+    const userDataForm = document.getElementById("userDataForm");
+    const orderSuccess = document.getElementById("orderSuccess");
+    const successMP = document.getElementById("successMP");
+    const orderIdText = document.getElementById("orderIdText");
+
+    const userNombre = document.getElementById("userNombre");
+    const userApellido = document.getElementById("userApellido");
+    const userEmail = document.getElementById("userEmail");
+    const userTelefono = document.getElementById("userTelefono");
+    const userDireccion = document.getElementById("userDireccion");
+
+    const successOrderItems = document.getElementById("successOrderItems");
+    const successOrderTotal = document.getElementById("successOrderTotal");
+
+    function openForm() {
+      const cart = JSON.parse(localStorage.getItem("fujeira_cart")) || [];
+      if (!cart.length) {
+        alert("Agregá un producto al carrito");
+        return false;
+      }
+
+      const offcanvasEl = document.getElementById("cartOffcanvas");
+      const offcanvas = bootstrap.Offcanvas.getInstance(offcanvasEl);
+      offcanvas?.hide();
+
+      userDataForm.classList.remove("d-none");
+      goToMPBtn?.classList.remove("d-none");
+      mpNote?.classList.remove("d-none");
+
+      setTimeout(() => {
+        const yOffset = -90;
+        const y =
+          userDataForm.getBoundingClientRect().top +
+          window.pageYOffset +
+          yOffset;
+
+        window.scrollTo({
+          top: y,
+          behavior: "smooth",
+        });
+      }, 300);
+    }
+
+    payWithMP?.addEventListener("click", (e) => {
+      e.preventDefault();
+      openForm();
+    });
+
+goToMPBtn.addEventListener("click", async (e) => {
+  e.preventDefault();
+
+  const form = document.getElementById("checkoutForm");
+if (!form.checkValidity()) {
+  form.classList.add("was-validated");
+  return;
+}
+
+  const nombre = userNombre.value.trim();
+  const apellido = userApellido.value.trim();
+  const email = userEmail.value.trim();
+  const telefono = userTelefono.value.trim();
+  const direccion = userDireccion.value.trim();
+
+  if (!nombre || !apellido || !email || !telefono || !direccion) {
+    window.showToast?.("Completá todos los datos");
+    return;
+  }
+
+  const cart = JSON.parse(localStorage.getItem("fujeira_cart")) || [];
+  if (!cart.length) {
+    alert("El carrito está vacío");
+    return;
+  }
+// TOTAL
+const total = cart.reduce((acc, item) => {
+  return acc + item.precio * item.cantidad;
+}, 0);
+
+// 🔥 REGISTRAR PEDIDO EN FIREBASE (MP)
+let firebaseOrderId;
+
+  // ID pedido
+  const orderId = `FJ-${Date.now().toString().slice(-6)}`;
+orderIdText.textContent = orderId;
+
+try {
+  firebaseOrderId = await createOrder({
+    orderId, 
+    nombre,
+    apellido,
+    telefono,
+    email,
+    direccion,
+    cart,
+    total,
+    canal: "Web - Mercado Pago",
+    metodoPago: "mercado_pago",
+    estado: "pendiente_pago"
+  });
+
+} catch (error) {
+  console.error("Error al crear pedido:", error);
+  alert("Hubo un error al registrar el pedido. Intentá de nuevo.");
+  return;
+}
+
+// 📧 MAIL CONFIRMACIÓN 
+sendConfirmationEmail({
+  nombre,
+  email,
+  orderId,
+  cart,
+  total,
+}).catch(err => {
+  console.error("Error enviando mail MP:", err);
+});
+
+// 🧾 RESUMEN PEDIDO
+successOrderItems.innerHTML = "";
+
+cart.forEach(item => {
+  const div = document.createElement("div");
+  div.className = "cart-msg-text";
+  div.innerHTML = `
+  • <strong>${item.nombre}</strong><br>
+  Código: <strong>${item.codigo}</strong><br>
+  ${getVarianteTexto(item)} — Cantidad: ${item.cantidad}
+`;
+  successOrderItems.appendChild(div);
+});
+
+// ✅ TOTAL 
+successOrderTotal.textContent = `$${total.toLocaleString("es-AR")}`;
+
+// UI
+userDataForm.classList.add("d-none");
+orderSuccess.classList.remove("d-none");
+successMP.classList.remove("d-none");
+
+// CHECKOUT — CREAR PREFERENCIA (init_point producción · sandbox_init_point prueba)
+fetch("/api/crear-preferencia.php", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    items: cart
+  })
+})
+  .then(async (res) => {
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      const mpMsg =
+        data.response?.message ||
+        data.response?.error ||
+        (typeof data.response === "string" ? data.response : null) ||
+        data.message ||
+        data.error ||
+        data.hint ||
+        "Revisá la configuración de Mercado Pago en el servidor.";
+      console.error("crear-preferencia:", res.status, data);
+      alert(`Error al iniciar el pago: ${mpMsg}`);
+      return;
+    }
+    const payUrl = data.init_point || data.sandbox_init_point;
+    if (payUrl) {
+      localStorage.removeItem("fujeira_cart");
+      const badge = document.getElementById("cartCount");
+      if (badge) badge.textContent = "0";
+      setTimeout(() => {
+        window.location.href = payUrl;
+      }, 1200);
+    } else {
+      alert("Error al iniciar el pago: respuesta sin URL de checkout.");
+      console.error(data);
+    }
+  })
+  .catch((err) => {
+    console.error("Error MP:", err);
+    alert(
+      "No se pudo conectar con el servidor de pagos. Si estás probando en tu PC, abrí el sitio por HTTP con PHP (no file://)."
+    );
+  });
+});
+});
+</script>
+
