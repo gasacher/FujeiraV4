@@ -1,6 +1,6 @@
 # Fujeira V4
 
-Sitio web desarrollado para la materia SEO, basado en la optimización de un proyecto existente.
+Sitio web desarrollado para la materia SEO, basado en la optimización de un proyecto existente previamente desarrollado.
 
 ## Objetivo
 
