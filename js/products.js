@@ -282,15 +282,6 @@ function getSelectionBlock(prod) {
         </p>`
       : "";
 
-    const notaSinStock = tieneStockData
-      ? `
-        <p class="size-availability-note text-light small mt-3 mb-0">
-          ¿No ves tu talle disponible? Escribinos por
-          <a href="${waConsulta}" target="_blank" rel="noopener noreferrer" class="link-light text-decoration-underline">WhatsApp</a>
-          y te avisamos cuando vuelva el stock.
-        </p>`
-      : "";
-
     return `
       <div class="mt-4">
         <p class="fw-bold mb-1">Talles disponibles</p>
