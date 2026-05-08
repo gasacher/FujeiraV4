@@ -1,5 +1,5 @@
 import { addToCart, renderCart, showToast } from "./cart.js";
-import { catalogDataSources } from "./product-data-sources.js";
+import { catalogDataSources, catalogSiteBase } from "./product-data-sources.js";
 import { getStockForTalle, isProductOutOfStock, buildAvisameWaUrl } from "./stock.js";
 
 const container = document.getElementById("productContainer");
@@ -33,13 +33,14 @@ function formatPrice(precio) {
   return `$${Number(precio).toLocaleString("es-AR")}`;
 }
 
-const SITE_ORIGIN = "https://fujeiraretrostore.com";
-
 function absoluteAssetUrl(path) {
-  if (!path) return `${SITE_ORIGIN}/assets/img/Logolima_transparente.png`;
+  const base = catalogSiteBase();
+  if (!path) {
+    return new URL("assets/img/Logolima_transparente.png", base).href;
+  }
   if (/^https?:\/\//i.test(path)) return path;
   const p = String(path).replace(/^\.\//, "").replace(/^\/+/, "");
-  return `${SITE_ORIGIN}/${p}`;
+  return new URL(p, base).href;
 }
 
 function setProductPageSeo(prod) {
@@ -64,7 +65,10 @@ function setProductPageSeo(prod) {
     } catch {
       canonical.setAttribute(
         "href",
-        `${SITE_ORIGIN}/producto.html?id=${encodeURIComponent(prod.codigo || "")}`
+        new URL(
+          `producto.html?id=${encodeURIComponent(prod.codigo || "")}`,
+          catalogSiteBase()
+        ).href
       );
     }
   }
@@ -75,7 +79,10 @@ function setProductPageSeo(prod) {
       u.hash = "";
       return u.toString();
     } catch {
-      return `${SITE_ORIGIN}/producto.html?id=${encodeURIComponent(prod.codigo || "")}`;
+      return new URL(
+        `producto.html?id=${encodeURIComponent(prod.codigo || "")}`,
+        catalogSiteBase()
+      ).href;
     }
   })();
 
