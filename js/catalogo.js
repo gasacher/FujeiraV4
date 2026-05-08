@@ -1,5 +1,5 @@
-import { catalogDataSources } from "./product-data-sources.js?v=20260508h1";
-import { isProductOutOfStock } from "./stock.js?v=20260508h1";
+import { catalogDataSources } from "./product-data-sources.js?v=20260508h2";
+import { isProductOutOfStock, getStockSummaryText } from "./stock.js?v=20260508h2";
 
 const GRID = document.getElementById("productGrid");
 const FILTER_BUTTONS = document.querySelectorAll("[data-filter]");
@@ -83,6 +83,11 @@ function renderCatalog(list) {
         ? "catalog-product-category catalog-product-category--retro-series"
         : "catalog-product-category";
 
+    const stockMini =
+      prod.stock && !sinStock
+        ? `<p class="catalog-stock-mini small text-warning mb-1">${getStockSummaryText(prod)}</p>`
+        : "";
+
     GRID.insertAdjacentHTML(
       "beforeend",
       `
@@ -94,6 +99,7 @@ function renderCatalog(list) {
           </div>
           <figcaption class="catalog-info">
             <p class="catalog-product-name">${prod.nombre}</p>
+            ${stockMini}
             <p class="${categoryClass}">
               ${prod.categoria?.toUpperCase() || ""}
             </p>

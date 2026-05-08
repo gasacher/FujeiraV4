@@ -1,5 +1,5 @@
-import { catalogDataSources } from "./product-data-sources.js?v=20260508h1";
-import { isProductOutOfStock } from "./stock.js?v=20260508h1";
+import { catalogDataSources } from "./product-data-sources.js?v=20260508h2";
+import { isProductOutOfStock, getStockSummaryText } from "./stock.js?v=20260508h2";
 
 const grid = document.getElementById("featuredGrid");
 
@@ -52,6 +52,11 @@ async function loadFeatured() {
           ? `<span class="catalog-card__badge catalog-card__badge--preventa">Preventa</span>`
           : "";
 
+      const stockMini =
+        p.stock && !sinStock
+          ? `<p class="catalog-stock-mini small text-warning mb-1">${getStockSummaryText(p)}</p>`
+          : "";
+
       return `
         <div class="col-6 col-md-3">
           <figure class="catalog-product-card featured-card ${p.preventa === true ? "catalog-product-card--preventa" : ""} ${sinStock ? "catalog-product-card--no-stock" : ""} h-100">
@@ -65,6 +70,7 @@ async function loadFeatured() {
 
             <figcaption class="catalog-info">
               <p class="catalog-product-name">${p.nombre}</p>
+              ${stockMini}
               <p class="catalog-product-category">
                 ${p.categoria?.toUpperCase() || ""}
               </p>
