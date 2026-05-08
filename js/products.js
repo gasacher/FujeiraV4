@@ -1,6 +1,6 @@
 import { addToCart, renderCart, showToast } from "./cart.js";
-import { catalogDataSources } from "./product-data-sources.js?v=20260508h2";
-import { getStockForTalle, isProductOutOfStock, buildAvisameWaUrl, getStockSummaryText } from "./stock.js?v=20260508h2";
+import { catalogDataSources } from "./product-data-sources.js?v=20260508h3";
+import { getStockForTalle, isProductOutOfStock, buildAvisameWaUrl } from "./stock.js?v=20260508h3";
 
 const container = document.getElementById("productContainer");
 
@@ -272,17 +272,18 @@ function getSelectionBlock(prod) {
         </p>`
       : "";
 
-    const stockResumen = tieneStockData
-      ? `<p class="product-stock-summary text-warning small fw-semibold mt-2 mb-3" role="status">
-          <i class="bi bi-box-seam" aria-hidden="true"></i>
-          Stock disponible: ${escapeHtml(getStockSummaryText(prod))}
+    const notaSinStock = tieneStockData
+      ? `
+        <p class="size-availability-note text-light small mt-3 mb-0">
+          ¿No ves tu talle disponible? Escribinos por
+          <a href="${waConsulta}" target="_blank" rel="noopener noreferrer" class="link-light text-decoration-underline">WhatsApp</a>
+          y te avisamos cuando vuelva el stock.
         </p>`
       : "";
 
     return `
       <div class="mt-4">
         <p class="fw-bold mb-1">Talles disponibles</p>
-        ${stockResumen}
         <div class="sizes-list">
           ${botones}
         </div>
