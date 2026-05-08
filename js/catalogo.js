@@ -83,12 +83,12 @@ function renderCatalog(list) {
       "beforeend",
       `
       <div class="col-6 col-md-4 col-lg-3">
-        <div class="catalog-product-card ${prod.preventa === true ? "catalog-product-card--preventa" : ""} h-100">
+        <figure class="catalog-product-card ${prod.preventa === true ? "catalog-product-card--preventa" : ""} h-100">
           <div class="catalog-img-wrapper">
             ${preventaBadge}
             <img src="${img}" alt="${prod.nombre}" loading="lazy" decoding="async">
           </div>
-          <div class="catalog-info">
+          <figcaption class="catalog-info">
             <p class="catalog-product-name">${prod.nombre}</p>
             <p class="${categoryClass}">
               ${prod.categoria?.toUpperCase() || ""}
@@ -96,8 +96,8 @@ function renderCatalog(list) {
             <a href="producto.html?id=${prod.codigo}" class="cta-fujeira-outline">
               Ver más
             </a>
-          </div>
-        </div>
+          </figcaption>
+        </figure>
       </div>
       `
     );
