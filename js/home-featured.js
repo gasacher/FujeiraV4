@@ -1,5 +1,5 @@
-import { catalogDataSources } from "./product-data-sources.js";
-import { isProductOutOfStock } from "./stock.js";
+import { catalogDataSources } from "./product-data-sources.js?v=20260508h1";
+import { isProductOutOfStock } from "./stock.js?v=20260508h1";
 
 const grid = document.getElementById("featuredGrid");
 

@@ -1,4 +1,4 @@
-export const CATALOG_JSON_QUERY = "v=20260413h52";
+export const CATALOG_JSON_QUERY = "v=20260508h1";
 
 export function catalogDataSources(opts = {}) {
   const { leadingDotSlash = false } = opts;
