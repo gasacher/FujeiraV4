@@ -1,15 +1,17 @@
-export const CATALOG_JSON_QUERY = "v=20260508h4";
+export const CATALOG_JSON_QUERY = "v=20260508h5";
 
-export function catalogDataSources(opts = {}) {
-  const { leadingDotSlash = false } = opts;
+/** URLs absolutas al origen del sitio, resueltas desde este módulo (evita fallos si el HTML está en otra ruta). */
+export function catalogDataSources() {
   const q = CATALOG_JSON_QUERY;
-  const paths = [
-    `data/productos-retroseries.json?${q}`,
-    `data/productos-cuadros.json?${q}`
+  return [
+    new URL(`../data/productos-retroseries.json?${q}`, import.meta.url).href,
+    new URL(`../data/productos-cuadros.json?${q}`, import.meta.url).href
   ];
-  return leadingDotSlash ? paths.map(p => `./${p}`) : paths;
 }
 
 export function retroSeriesDataUrl() {
-  return `data/productos-retroseries.json?${CATALOG_JSON_QUERY}`;
+  return new URL(
+    `../data/productos-retroseries.json?${CATALOG_JSON_QUERY}`,
+    import.meta.url
+  ).href;
 }
