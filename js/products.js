@@ -19,7 +19,7 @@ if (!id) {
   console.error("FUJEIRA: falta #productContainer en el HTML");
 }
 
-const SOURCES = catalogDataSources({ leadingDotSlash: true });
+const SOURCES = catalogDataSources();
 
 function isRetroSeriesProduct(prod) {
   return (
