@@ -50,7 +50,7 @@ async function loadFeatured() {
 
       return `
         <div class="col-6 col-md-3">
-          <div class="catalog-product-card featured-card ${p.preventa === true ? "catalog-product-card--preventa" : ""} h-100">
+          <figure class="catalog-product-card featured-card ${p.preventa === true ? "catalog-product-card--preventa" : ""} h-100">
 
             <div class="catalog-img-wrapper">
               ${preventaBadge}
@@ -59,7 +59,7 @@ async function loadFeatured() {
               </a>
             </div>
 
-            <div class="catalog-info">
+            <figcaption class="catalog-info">
               <p class="catalog-product-name">${p.nombre}</p>
               <p class="catalog-product-category">
                 ${p.categoria?.toUpperCase() || ""}
@@ -69,9 +69,9 @@ async function loadFeatured() {
                  class="cta-fujeira-outline">
                 VER MÁS
               </a>
-            </div>
+            </figcaption>
 
-          </div>
+          </figure>
         </div>
       `;
     }).join("");
@@ -102,22 +102,22 @@ async function loadFeaturedCuadros() {
 
     gridCuadros.innerHTML = cuadros.map(p => `
       <div class="col-6 col-md-3">
-        <div class="catalog-product-card cuadro-card h-100">
+        <figure class="catalog-product-card cuadro-card h-100">
 
           <a href="producto.html?id=${p.codigo}">
             <img src="${p.fotos?.[0]}" alt="${p.nombre}" loading="lazy" decoding="async">
           </a>
 
-          <div class="catalog-info text-center">
+          <figcaption class="catalog-info text-center">
             <p class="catalog-product-name">${p.nombre}</p>
 
             <a href="producto.html?id=${p.codigo}"
                class="cta-fujeira-outline mt-2">
               VER MÁS
             </a>
-          </div>
+          </figcaption>
 
-        </div>
+        </figure>
       </div>
     `).join("");
 
