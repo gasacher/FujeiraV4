@@ -1,5 +1,5 @@
-import { catalogDataSources } from "./product-data-sources.js?v=20260508h3";
-import { isProductOutOfStock } from "./stock.js?v=20260508h3";
+import { catalogDataSources } from "./product-data-sources.js";
+import { isProductOutOfStock } from "./stock.js";
 
 const GRID = document.getElementById("productGrid");
 const FILTER_BUTTONS = document.querySelectorAll("[data-filter]");

@@ -1,6 +1,6 @@
 import { addToCart, renderCart, showToast } from "./cart.js";
-import { catalogDataSources } from "./product-data-sources.js?v=20260508h3";
-import { getStockForTalle, isProductOutOfStock, buildAvisameWaUrl } from "./stock.js?v=20260508h3";
+import { catalogDataSources } from "./product-data-sources.js";
+import { getStockForTalle, isProductOutOfStock, buildAvisameWaUrl } from "./stock.js";
 
 const container = document.getElementById("productContainer");
 
@@ -8,12 +8,15 @@ const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
 if (!id) {
-  container.innerHTML = `
+  if (container) {
+    container.innerHTML = `
     <p class="text-light text-center mt-5">
       ❌ Producto no especificado.
     </p>
   `;
-  throw new Error("ID no encontrado");
+  }
+} else if (!container) {
+  console.error("FUJEIRA: falta #productContainer en el HTML");
 }
 
 const SOURCES = catalogDataSources({ leadingDotSlash: true });
@@ -561,4 +564,6 @@ function renderRelated(prod, productos) {
   `).join("");
 }
 
-loadProduct();
+if (container && id) {
+  loadProduct();
+}
