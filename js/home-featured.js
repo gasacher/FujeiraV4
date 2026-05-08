@@ -1,4 +1,5 @@
 import { catalogDataSources } from "./product-data-sources.js";
+import { isProductOutOfStock } from "./stock.js";
 
 const grid = document.getElementById("featuredGrid");
 
@@ -43,17 +44,20 @@ async function loadFeatured() {
 
     grid.innerHTML = destacados.map(p => {
       const img = p.fotos?.[0] || "assets/img/placeholder.png";
-      const preventaBadge =
-        p.preventa === true
+      const sinStock = isProductOutOfStock(p);
+
+      const badge = sinStock
+        ? `<span class="catalog-card__badge catalog-card__badge--no-stock">Sin stock</span>`
+        : p.preventa === true
           ? `<span class="catalog-card__badge catalog-card__badge--preventa">Preventa</span>`
           : "";
 
       return `
         <div class="col-6 col-md-3">
-          <figure class="catalog-product-card featured-card ${p.preventa === true ? "catalog-product-card--preventa" : ""} h-100">
+          <figure class="catalog-product-card featured-card ${p.preventa === true ? "catalog-product-card--preventa" : ""} ${sinStock ? "catalog-product-card--no-stock" : ""} h-100">
 
             <div class="catalog-img-wrapper">
-              ${preventaBadge}
+              ${badge}
               <a href="producto.html?id=${p.codigo}">
                 <img src="${img}" alt="${p.nombre}" loading="lazy" decoding="async">
               </a>

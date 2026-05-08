@@ -1,4 +1,5 @@
 import { catalogDataSources } from "./product-data-sources.js";
+import { isProductOutOfStock } from "./stock.js";
 
 const GRID = document.getElementById("productGrid");
 const FILTER_BUTTONS = document.querySelectorAll("[data-filter]");
@@ -69,8 +70,11 @@ function renderCatalog(list) {
 
   list.forEach(prod => {
     const img = prod.fotos?.[0] || "assets/img/placeholder.png";
-    const preventaBadge =
-      prod.preventa === true
+    const sinStock = isProductOutOfStock(prod);
+
+    const badge = sinStock
+      ? `<span class="catalog-card__badge catalog-card__badge--no-stock">Sin stock</span>`
+      : prod.preventa === true
         ? `<span class="catalog-card__badge catalog-card__badge--preventa">Preventa</span>`
         : "";
 
@@ -83,9 +87,9 @@ function renderCatalog(list) {
       "beforeend",
       `
       <div class="col-6 col-md-4 col-lg-3">
-        <figure class="catalog-product-card ${prod.preventa === true ? "catalog-product-card--preventa" : ""} h-100">
+        <figure class="catalog-product-card ${prod.preventa === true ? "catalog-product-card--preventa" : ""} ${sinStock ? "catalog-product-card--no-stock" : ""} h-100">
           <div class="catalog-img-wrapper">
-            ${preventaBadge}
+            ${badge}
             <img src="${img}" alt="${prod.nombre}" loading="lazy" decoding="async">
           </div>
           <figcaption class="catalog-info">
