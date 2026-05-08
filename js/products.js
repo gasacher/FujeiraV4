@@ -1,6 +1,6 @@
 import { addToCart, renderCart, showToast } from "./cart.js";
-import { catalogDataSources } from "./product-data-sources.js?v=20260508h1";
-import { getStockForTalle, isProductOutOfStock, buildAvisameWaUrl } from "./stock.js?v=20260508h1";
+import { catalogDataSources } from "./product-data-sources.js?v=20260508h2";
+import { getStockForTalle, isProductOutOfStock, buildAvisameWaUrl, getStockSummaryText } from "./stock.js?v=20260508h2";
 
 const container = document.getElementById("productContainer");
 
@@ -272,9 +272,17 @@ function getSelectionBlock(prod) {
         </p>`
       : "";
 
+    const stockResumen = tieneStockData
+      ? `<p class="product-stock-summary text-warning small fw-semibold mt-2 mb-3" role="status">
+          <i class="bi bi-box-seam" aria-hidden="true"></i>
+          Stock disponible: ${escapeHtml(getStockSummaryText(prod))}
+        </p>`
+      : "";
+
     return `
       <div class="mt-4">
         <p class="fw-bold mb-1">Talles disponibles</p>
+        ${stockResumen}
         <div class="sizes-list">
           ${botones}
         </div>
@@ -454,6 +462,15 @@ function renderProduct(prod, productos) {
 
     if (prod.talles?.length && !talleSeleccionado) {
       showToast("Seleccioná un talle");
+      return;
+    }
+
+    if (
+      prod.stock &&
+      talleSeleccionado &&
+      getStockForTalle(prod, talleSeleccionado) <= 0
+    ) {
+      showToast("Ese talle no tiene stock");
       return;
     }
 
