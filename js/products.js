@@ -1,6 +1,6 @@
 import { addToCart, renderCart, showToast } from "./cart.js";
-import { catalogDataSources } from "./product-data-sources.js";
-import { getStockForTalle, isProductOutOfStock, buildAvisameWaUrl } from "./stock.js";
+import { catalogDataSources } from "./product-data-sources.js?v=20260508h1";
+import { getStockForTalle, isProductOutOfStock, buildAvisameWaUrl } from "./stock.js?v=20260508h1";
 
 const container = document.getElementById("productContainer");
 
