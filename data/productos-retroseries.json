@@ -13,16 +13,14 @@
       "assets/catalogo/retro_series/diablos_rojos/diablos_rojos05.png",
       "assets/catalogo/retro_series/diablos_rojos/diablos_rojos01.png"
     ],
-    "talles": ["S", "M", "L", "XL", "XXL"]
+    "talles": ["S", "M", "L", "XL", "XXL"],
+    "stock": { "S": 0, "M": 0, "L": 5, "XL": 5, "XXL": 0 }
   },
   {
     "codigo": "FU-PREV-02",
     "proveedor": "retro_series",
     "nombre": "Los Xeneizes",
     "categoria": "Fujeira Retro Series",
-    "preventa": true,
-    "preventa_entrega": "Entrega estimada según producción",
-    "preventa_detalle": "Fujeira Retro Series. Diseños que nacen de nosotros. El apodo. La fecha. La mística que nunca se estampó.",
     "precio": 40000,
     "destacado": false,
     "fotos": [
@@ -32,16 +30,14 @@
       "assets/catalogo/retro_series/los xeneixes/boca02.png",
       "assets/catalogo/retro_series/los xeneixes/boca03.png"
     ],
-    "talles": ["S", "M", "L", "XL", "XXL"]
+    "talles": ["S", "M", "L", "XL", "XXL"],
+    "stock": { "S": 0, "M": 0, "L": 5, "XL": 5, "XXL": 0 }
   },
   {
     "codigo": "FU-PREV-03",
     "proveedor": "retro_series",
     "nombre": "Cuervos",
     "categoria": "Fujeira Retro Series",
-    "preventa": true,
-    "preventa_entrega": "Entrega estimada según producción",
-    "preventa_detalle": "Fujeira Retro Series. Diseños que nacen de nosotros. El apodo. La fecha. La mística que nunca se estampó.",
     "precio": 40000,
     "destacado": false,
     "fotos": [
@@ -51,16 +47,14 @@
       "assets/catalogo/retro_series/cuervos/cuervos04.png",
       "assets/catalogo/retro_series/cuervos/cuervos05.png"
     ],
-    "talles": ["S", "M", "L", "XL", "XXL"]
+    "talles": ["S", "M", "L", "XL", "XXL"],
+    "stock": { "S": 0, "M": 0, "L": 2, "XL": 5, "XXL": 0 }
   },
   {
     "codigo": "FU-PREV-04",
     "proveedor": "retro_series",
     "nombre": "El Fortín",
     "categoria": "Fujeira Retro Series",
-    "preventa": true,
-    "preventa_entrega": "Entrega estimada según producción",
-    "preventa_detalle": "Fujeira Retro Series. Diseños que nacen de nosotros. El apodo. La fecha. La mística que nunca se estampó.",
     "precio": 40000,
     "destacado": false,
     "fotos": [
@@ -68,16 +62,14 @@
       "assets/catalogo/retro_series/el_fortin/el_fortin03.png",
       "assets/catalogo/retro_series/el_fortin/el_fortin02.png"
     ],
-    "talles": ["S", "M", "L", "XL", "XXL"]
+    "talles": ["S", "M", "L", "XL", "XXL"],
+    "stock": { "S": 0, "M": 0, "L": 5, "XL": 5, "XXL": 0 }
   },
   {
     "codigo": "FU-PREV-SP1",
     "proveedor": "retro_series",
     "nombre": "Sin permiso",
     "categoria": "Fujeira Retro Series",
-    "preventa": true,
-    "preventa_entrega": "Entrega estimada según producción",
-    "preventa_detalle": "Fujeira Retro Series. Diseños que nacen de nosotros. El apodo. La fecha. La mística que nunca se estampó.",
     "precio": 40000,
     "destacado": false,
     "fotos": [
@@ -86,6 +78,7 @@
       "assets/catalogo/retro_series/las_sin_permiso_version1/sinpermisov2.png",
       "assets/catalogo/retro_series/las_sin_permiso_version1/sinpermisov3.png"
     ],
-    "talles": ["S", "M", "L", "XL", "XXL"]
+    "talles": ["S", "M", "L", "XL", "XXL"],
+    "stock": { "S": 0, "M": 0, "L": 5, "XL": 5, "XXL": 0 }
   }
 ]

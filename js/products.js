@@ -1,5 +1,6 @@
 import { addToCart, renderCart, showToast } from "./cart.js";
 import { catalogDataSources } from "./product-data-sources.js";
+import { getStockForTalle, isProductOutOfStock, buildAvisameWaUrl } from "./stock.js";
 
 const container = document.getElementById("productContainer");
 
@@ -16,8 +17,6 @@ if (!id) {
 }
 
 const SOURCES = catalogDataSources({ leadingDotSlash: true });
-
-const RETRO_TALLES_STOCK = new Set(["L", "XL"]);
 
 function isRetroSeriesProduct(prod) {
   return (
@@ -239,17 +238,17 @@ function getSelectionBlock(prod) {
   }
 
   if (prod.talles?.length) {
-    const retro = isRetroSeriesProduct(prod);
-    const waConsulta =
-      "https://wa.me/5491130124589?text=" +
-      encodeURIComponent(
-        "Hola FUJEIRA — consulto por un talle que no está disponible en la web."
-      );
+    const tieneStockData = !!prod.stock;
+    const waConsulta = buildAvisameWaUrl(prod);
 
     const botones = prod.talles
       .map(t => {
-        const enStock = !retro || RETRO_TALLES_STOCK.has(t);
+        const stock = getStockForTalle(prod, t);
+        const enStock = stock > 0;
         const dis = enStock ? "" : " disabled";
+        const titulo = enStock
+          ? `Elegir talle ${t}`
+          : "Sin stock online — escribinos por WhatsApp";
         return `
             <button
               class="size-btn${enStock ? "" : " size-btn--no-stock"}"
@@ -257,19 +256,19 @@ function getSelectionBlock(prod) {
               data-talle="${t}"
               data-disponible="${enStock ? "1" : "0"}"
               ${dis}
-              title="${enStock ? "Elegir talle " + t : "Sin stock online — consultá por WhatsApp"}"
+              title="${titulo}"
             >
               ${t}
             </button>`;
       })
       .join("");
 
-    const notaRetro = retro
+    const notaSinStock = tieneStockData
       ? `
         <p class="size-availability-note text-light small mt-3 mb-0">
-          ¿Querés <strong>S, M o XXL</strong>? Escribinos por
+          ¿No ves tu talle disponible? Escribinos por
           <a href="${waConsulta}" target="_blank" rel="noopener noreferrer" class="link-light text-decoration-underline">WhatsApp</a>
-          y lo gestionamos.
+          y te avisamos cuando vuelva el stock.
         </p>`
       : "";
 
@@ -279,7 +278,7 @@ function getSelectionBlock(prod) {
         <div class="sizes-list">
           ${botones}
         </div>
-        ${notaRetro}
+        ${notaSinStock}
       </div>
     `;
   }
@@ -325,6 +324,7 @@ function renderProduct(prod, productos) {
   setProductPageSeo(prod);
 
   const hasImages = Array.isArray(prod.fotos) && prod.fotos.length > 0;
+  const sinStock = isProductOutOfStock(prod);
   let talleSeleccionado = null;
   let marcoSeleccionado = null;
 
@@ -385,9 +385,19 @@ function renderProduct(prod, productos) {
         ${getSelectionBlock(prod)}
 
         <div class="mt-4 d-flex flex-wrap gap-2">
-          <button id="addToCartBtn" class="cta-fujeira" type="button">
-            Agregar al carrito
-          </button>
+          ${
+            sinStock
+              ? `
+                <a href="${buildAvisameWaUrl(prod)}" target="_blank" rel="noopener noreferrer" class="cta-fujeira">
+                  <i class="bi bi-whatsapp"></i> Avisame cuando vuelva
+                </a>
+              `
+              : `
+                <button id="addToCartBtn" class="cta-fujeira" type="button">
+                  Agregar al carrito
+                </button>
+              `
+          }
 
           <button id="shareProductBtn" class="cta-fujeira-outline" type="button">
             <i class="bi bi-share"></i> Compartir
