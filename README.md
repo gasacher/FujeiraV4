@@ -154,7 +154,42 @@ Se aplicaron varias técnicas para reducir el tiempo de carga percibido y mejora
 
 ---
 
-## 10. Conclusión y aprendizajes
+## 10. Variable de entorno de Mercado Pago
+
+El Access Token de producción **no va en el código ni en GitHub**. `api/crear-preferencia.php` lo lee de la variable `MP_ACCESS_TOKEN` con `getenv()` y `$_ENV` (también `$_SERVER`, por si el hosting la expone ahí).
+
+El token que estuvo escrito en ese archivo quedó público: sigue en el historial de Git y este cambio no reescribe la historia. En el panel de Mercado Pago hay que **revocar ese Access Token y crear uno nuevo**. En el servidor se configura solo el token nuevo.
+
+Los nombres están en `.env.example`. El archivo real `.env` está en `.gitignore`.
+
+### Hostinger (sitio PHP en `public_html`)
+
+La pantalla **Environment variables** de hPanel es para aplicaciones **Node.js** ([documentación](https://www.hostinger.com/support/how-to-edit-or-add-environment-variables-after-deployment/)). Este checkout corre en PHP, así que el valor se carga desde el entorno del proceso o desde un `.env` en el servidor.
+
+1. Entrá a hPanel → **Sitios web** → **Administrar** → **Archivos** → **Administrador de archivos**.
+2. Abrí la carpeta del dominio que **contiene** `public_html` (el mismo nivel que `public_html`, no adentro). En un plan compartido suele ser `domains/fujeiraretrostore.com/`.
+3. Creá un archivo llamado `.env` con una sola línea, sin comillas y sin subirlo a GitHub:
+
+   ```
+   MP_ACCESS_TOKEN=your_mercado_pago_access_token
+   ```
+
+4. El script busca ese archivo en este orden: un nivel arriba de la raíz del sitio (junto a `public_html`), la raíz del sitio y `api/.env`. Si PHP no puede leer fuera de `public_html` (`open_basedir`), dejá el `.env` en la raíz del sitio. El `.htaccess` del repositorio niega la descarga de `.env` por URL.
+5. Si el sitio se despliega desde GitHub, el deploy suele pisar `public_html`. El `.env` de al lado de `public_html` se conserva. Si lo pusiste dentro de `public_html`, volvé a crearlo después de cada deploy.
+
+Si más adelante el dominio se publica como app Node.js en Hostinger: **Sitios web → Panel → Environment variables**, agregá `MP_ACCESS_TOKEN` y aplicá los cambios. No commitees el valor.
+
+Una variable ya definida por el hosting (pantalla de Environment variables o `SetEnv` solo en el servidor) tiene prioridad sobre el archivo `.env`. No agregues el token con `SetEnv` en un `.htaccess` que se suba a GitHub.
+
+### GitHub
+
+El repositorio es público. Solo se versiona `.env.example`, con el nombre de la variable y un placeholder. No pegues el Access Token en el código, en un commit ni en un issue.
+
+Sin la variable, `POST /api/crear-preferencia.php` responde `503` con `Mercado Pago no configurado`.
+
+---
+
+## 11. Conclusión y aprendizajes
 
 El proyecto permitió llevar a la práctica, sobre un caso real, la mayoría de los conceptos trabajados en cursada: desde la redacción de metadatos orientados a búsqueda, pasando por la reestructuración semántica del HTML, hasta el trabajo fino de performance con atributos nativos del navegador.
 
