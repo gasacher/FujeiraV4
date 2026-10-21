@@ -1,0 +1,8 @@
+# Secrets. Keep the example file; never commit real values.
+.env
+.env.*
+!.env.example
+
+# Legacy local override. Do not put the Access Token in PHP.
+config-mp.local.php
+api/config-mp.local.php
