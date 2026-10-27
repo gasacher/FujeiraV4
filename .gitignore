@@ -1,11 +1,25 @@
-# Secrets. Keep the example file; never commit real values.
+/.phpunit.cache
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/storage/pail
+/vendor
 .env
-.env.*
-!.env.example
-
-# Legacy local override. Do not put the Access Token in PHP.
+.env.backup
+.env.production
+.env.local
 config-mp.local.php
-api/config-mp.local.php
-
-# Local SFTP profile (host and username). Never commit it.
-.vscode/sftp.json
+.phpactor.json
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+/auth.json
+/.fleet
+/.idea
+/.nova
+/.vscode
+/.zed

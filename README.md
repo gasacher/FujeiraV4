@@ -1,3 +1,46 @@
+# FUJEIRA — Tienda Laravel
+
+La tienda corre con Laravel 11. El catálogo, el carrito y el checkout de Mercado Pago viven en el servidor. El Access Token no está en el código: se lee de `MP_ACCESS_TOKEN`.
+
+El sitio estático anterior quedó en `legacy/`.
+
+## Páginas
+
+- `/` inicio
+- `/catalogo` y `/producto/{codigo}`
+- `/carrito` y `/checkout`
+- `/pago/exitoso`, `/pago/pendiente`, `/pago/fallido`
+- `/nosotros`, `/faqs`, `/contacto`
+- `POST /webhooks/mercadopago` confirma el pago
+
+Los precios salen del catálogo (`database/data`), no del navegador. Un talle sin stock no entra al carrito.
+
+## Cómo correrla
+
+```bash
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
+php artisan serve
+```
+
+En `.env`, `MP_ACCESS_TOKEN` es el Access Token nuevo de Mercado Pago, el que queda después de revocar el que estuvo publicado en el sitio viejo.
+
+## Hostinger
+
+El dominio tiene que apuntar a la carpeta `public` (ahí está `index.php`). El resto del proyecto —`app`, `vendor`, `.env`— queda fuera de esa carpeta pública.
+
+1. Subí el proyecto.
+2. En hPanel, la raíz del sitio tiene que ser `public`. Si el plan no deja cambiarla, mové el contenido de `public` a `public_html` y el resto del proyecto un nivel arriba, ajustando las rutas de `public/index.php`.
+3. Creá el `.env` en el servidor, con `APP_KEY`, `APP_URL=https://fujeiraretrostore.com` y `MP_ACCESS_TOKEN`.
+4. Ejecutá `php artisan migrate`.
+5. `storage` y `bootstrap/cache` tienen que poder escribir.
+
+Para MySQL de Hostinger, en `.env` usá `DB_CONNECTION=mysql` y los datos de la base. En local puede quedar `sqlite`.
+
+---
+
 # FUJEIRA V4 — Sitio web optimizado para SEO
 
 Proyecto de sitio web desarrollado para la materia **Programación con Entornos de Trabajo**, centrado en la aplicación práctica de criterios de SEO on-page, estructura semántica HTML5 y buenas prácticas técnicas para mejorar la visibilidad, el rendimiento y la accesibilidad del sitio.
