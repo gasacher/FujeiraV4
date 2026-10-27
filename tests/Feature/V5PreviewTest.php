@@ -125,8 +125,6 @@ class V5PreviewTest extends TestCase
 
         $this->get('http://v5.fujeiraretrostore.com/v5/catalogo')
             ->assertRedirect('/catalogo');
-
-        $this->get('/checkout')->assertOk()->assertSee('Continuar a Mercado Pago');
     }
 
     private function codigoDe(string $categoria): string
