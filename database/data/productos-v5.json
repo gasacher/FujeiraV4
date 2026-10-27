@@ -1,0 +1,715 @@
+{
+  "muestra": true,
+  "nota": "Muestra para la vista previa v5. No es la carpeta completa del Drive y no tiene precios, talles ni stock.",
+  "origen": "https://drive.google.com/drive/folders/1Y8-OmFwyOhwF7SIT_iGJOJoAJRHfDJ5s",
+  "importado": "2026-10-27",
+  "totales_en_drive": {
+    "Jugador": 256,
+    "Retro": 292,
+    "Fan": 202
+  },
+  "productos": [
+    {
+      "codigo": "V5-JUG-FC827AD795",
+      "nombre": "Jugador 01",
+      "categoria": "Jugador",
+      "archivo": "011676a1.jpg",
+      "drive_id": "12V1gKruRuQGC-NE6jlfOqLGRk6MwISl7",
+      "fotos": [
+        "assets/v5/jugador/V5-JUG-FC827AD795.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-JUG-4FE29D647D",
+      "nombre": "Jugador 02",
+      "categoria": "Jugador",
+      "archivo": "0e6ac9fd.jpg",
+      "drive_id": "17Gc1lFEUDe-5QvfZkVz65vid75tl9icX",
+      "fotos": [
+        "assets/v5/jugador/V5-JUG-4FE29D647D.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-JUG-295CA14B81",
+      "nombre": "Jugador 03",
+      "categoria": "Jugador",
+      "archivo": "1b005baf.jpg",
+      "drive_id": "1t3yyGwOmqr9mWM2Laa-lHkZJ9YLivpSN",
+      "fotos": [
+        "assets/v5/jugador/V5-JUG-295CA14B81.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-JUG-88B1647368",
+      "nombre": "Jugador 04",
+      "categoria": "Jugador",
+      "archivo": "281abeb9.jpg",
+      "drive_id": "1OKuJFOqYwQzjjZA5lqKMqSkgxw7Fokwa",
+      "fotos": [
+        "assets/v5/jugador/V5-JUG-88B1647368.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-JUG-491996B6FB",
+      "nombre": "Jugador 05",
+      "categoria": "Jugador",
+      "archivo": "3325eee6.jpg",
+      "drive_id": "1t4ObgvKfZ2fAhNaT-EBHAGG_G4xFjueh",
+      "fotos": [
+        "assets/v5/jugador/V5-JUG-491996B6FB.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-JUG-A569D284B5",
+      "nombre": "Jugador 06",
+      "categoria": "Jugador",
+      "archivo": "3c76a3c3.jpg",
+      "drive_id": "1pA73s4775iz01GOzZF4n-JVZw_ikxceX",
+      "fotos": [
+        "assets/v5/jugador/V5-JUG-A569D284B5.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-JUG-40FD42AEE7",
+      "nombre": "Jugador 07",
+      "categoria": "Jugador",
+      "archivo": "477333ca.jpg",
+      "drive_id": "1RxHeL2Z71hRl9HTsRZilmCP20vlNwupw",
+      "fotos": [
+        "assets/v5/jugador/V5-JUG-40FD42AEE7.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-JUG-DA5A23D61B",
+      "nombre": "Jugador 08",
+      "categoria": "Jugador",
+      "archivo": "56a2a40d.jpg",
+      "drive_id": "12Y0Rqyg3afejFmjAWMBNurJZn2a1E1Qa",
+      "fotos": [
+        "assets/v5/jugador/V5-JUG-DA5A23D61B.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-JUG-F88C2140E2",
+      "nombre": "Jugador 09",
+      "categoria": "Jugador",
+      "archivo": "67843db4.jpg",
+      "drive_id": "1kztFKsgbXhSTVfHcGJE4wzuJl4RRPAtr",
+      "fotos": [
+        "assets/v5/jugador/V5-JUG-F88C2140E2.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-JUG-449B3E0D91",
+      "nombre": "Jugador 10",
+      "categoria": "Jugador",
+      "archivo": "7881a583.jpg",
+      "drive_id": "1cwPnJm9N7aGjdyANLp58WEAykvZzxH-T",
+      "fotos": [
+        "assets/v5/jugador/V5-JUG-449B3E0D91.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-JUG-20C66E8132",
+      "nombre": "Jugador 11",
+      "categoria": "Jugador",
+      "archivo": "87105c02.jpg",
+      "drive_id": "1D0OvzHvSJ4aNoo8IE8ncsgHK-fvfusIj",
+      "fotos": [
+        "assets/v5/jugador/V5-JUG-20C66E8132.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-JUG-18423EB5C6",
+      "nombre": "Jugador 12",
+      "categoria": "Jugador",
+      "archivo": "95bb9e6e.jpg",
+      "drive_id": "1h8ZqCQCbC8UsqY_YTKabH8uSHXgBITUU",
+      "fotos": [
+        "assets/v5/jugador/V5-JUG-18423EB5C6.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-JUG-EA916333EE",
+      "nombre": "Jugador 13",
+      "categoria": "Jugador",
+      "archivo": "9cf84ad8.jpg",
+      "drive_id": "18ocqO3b-Gh4ZCf27zB7CiONWW3dwT6Xa",
+      "fotos": [
+        "assets/v5/jugador/V5-JUG-EA916333EE.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-JUG-A56E19F0EE",
+      "nombre": "Jugador 14",
+      "categoria": "Jugador",
+      "archivo": "b166db6d.jpg",
+      "drive_id": "1MBVpw22Wl7UNqn3CjcFhYsHGrdpaVWX9",
+      "fotos": [
+        "assets/v5/jugador/V5-JUG-A56E19F0EE.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-JUG-A898260A64",
+      "nombre": "Jugador 15",
+      "categoria": "Jugador",
+      "archivo": "c2baf358.jpg",
+      "drive_id": "1afNvb1cfIQCi_R-05maRv8DWzViYlShz",
+      "fotos": [
+        "assets/v5/jugador/V5-JUG-A898260A64.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-JUG-B8F1D4B2E9",
+      "nombre": "Jugador 16",
+      "categoria": "Jugador",
+      "archivo": "d506f28d.jpg",
+      "drive_id": "1mveGJsmMu_2NrHn4BbZkv2Zn6ncQaCMZ",
+      "fotos": [
+        "assets/v5/jugador/V5-JUG-B8F1D4B2E9.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-JUG-D453760FA7",
+      "nombre": "Jugador 17",
+      "categoria": "Jugador",
+      "archivo": "e88fbe50.jpg",
+      "drive_id": "18z7zcwfzwqaSy42QdR9H9g1mOfKJOHd-",
+      "fotos": [
+        "assets/v5/jugador/V5-JUG-D453760FA7.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-JUG-BBB74E806F",
+      "nombre": "Jugador 18",
+      "categoria": "Jugador",
+      "archivo": "fd968ef9.jpg",
+      "drive_id": "1pE5e7R4gHNsBh-z41VRVBNo8o4uK7d4o",
+      "fotos": [
+        "assets/v5/jugador/V5-JUG-BBB74E806F.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-RET-83028553E9",
+      "nombre": "Retro 01",
+      "categoria": "Retro",
+      "archivo": "00d6263e.jpg",
+      "drive_id": "1JjgEFkHuuLGwSlEafL1DB8VMdNEQ2kgD",
+      "fotos": [
+        "assets/v5/retro/V5-RET-83028553E9.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-RET-9874836733",
+      "nombre": "Retro 02",
+      "categoria": "Retro",
+      "archivo": "14d7bd5a.jpg",
+      "drive_id": "1pMDyIZPb9DmOc8wxO1eLtTgTseVHNnuk",
+      "fotos": [
+        "assets/v5/retro/V5-RET-9874836733.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-RET-9ACA414767",
+      "nombre": "Retro 03",
+      "categoria": "Retro",
+      "archivo": "21279c45.jpg",
+      "drive_id": "1sGEo06UGu-vZEc2I4_N9ZWhHbUi9v97U",
+      "fotos": [
+        "assets/v5/retro/V5-RET-9ACA414767.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-RET-FEB489211F",
+      "nombre": "Retro 04",
+      "categoria": "Retro",
+      "archivo": "3016b898.jpg",
+      "drive_id": "18MtYGtcGsL9HoJKpILW6JY4CuPevAJM8",
+      "fotos": [
+        "assets/v5/retro/V5-RET-FEB489211F.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-RET-14B37805FE",
+      "nombre": "Retro 05",
+      "categoria": "Retro",
+      "archivo": "3ef3719a.jpg",
+      "drive_id": "1D19-VUWX-yOto4L2455EaNao1q_FY4Xv",
+      "fotos": [
+        "assets/v5/retro/V5-RET-14B37805FE.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-RET-A83A109A3E",
+      "nombre": "Retro 06",
+      "categoria": "Retro",
+      "archivo": "4d7bafc6.jpg",
+      "drive_id": "1IGS3RccaU_IwxFtyh4L-My6B46GT7j95",
+      "fotos": [
+        "assets/v5/retro/V5-RET-A83A109A3E.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-RET-742E2EE056",
+      "nombre": "Retro 07",
+      "categoria": "Retro",
+      "archivo": "5e520f7a.jpg",
+      "drive_id": "1ANhNKuT2D2l5w-ezMgW31wwpciDSvv2j",
+      "fotos": [
+        "assets/v5/retro/V5-RET-742E2EE056.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-RET-14D8ADA5D4",
+      "nombre": "Retro 08",
+      "categoria": "Retro",
+      "archivo": "6895a7cf.jpg",
+      "drive_id": "1YdIoYRI2mps3y4j3gM9TrcWq47U512Gn",
+      "fotos": [
+        "assets/v5/retro/V5-RET-14D8ADA5D4.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-RET-5C71E8262C",
+      "nombre": "Retro 09",
+      "categoria": "Retro",
+      "archivo": "76aa6ecd.jpg",
+      "drive_id": "14oT9GSUHHB_qUmYjTH4vJUYp2ycSdCwF",
+      "fotos": [
+        "assets/v5/retro/V5-RET-5C71E8262C.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-RET-93E41DFA5C",
+      "nombre": "Retro 10",
+      "categoria": "Retro",
+      "archivo": "83a01978.jpg",
+      "drive_id": "1hctraM_de5-jVk43z2jQ2-5DkI2IX-Jx",
+      "fotos": [
+        "assets/v5/retro/V5-RET-93E41DFA5C.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-RET-FBE87BBE1B",
+      "nombre": "Retro 11",
+      "categoria": "Retro",
+      "archivo": "936f09d0.jpg",
+      "drive_id": "1tN9Oe45TiGRkc2ZORdd8LAAtB_ovxO4q",
+      "fotos": [
+        "assets/v5/retro/V5-RET-FBE87BBE1B.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-RET-C61941305E",
+      "nombre": "Retro 12",
+      "categoria": "Retro",
+      "archivo": "a3cc4eb1.jpg",
+      "drive_id": "1m-Si-qIsCdn6qNUpWf8Bd9u7pYyrruwB",
+      "fotos": [
+        "assets/v5/retro/V5-RET-C61941305E.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-RET-6C21796017",
+      "nombre": "Retro 13",
+      "categoria": "Retro",
+      "archivo": "b41e0315.jpg",
+      "drive_id": "1DQET_ySY5ZUFIE267N8TFpzv_C3vlwC3",
+      "fotos": [
+        "assets/v5/retro/V5-RET-6C21796017.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-RET-1C252DC8AC",
+      "nombre": "Retro 14",
+      "categoria": "Retro",
+      "archivo": "c1ea1087.jpg",
+      "drive_id": "1foso1FZijA2W9cTs2-_5pwl4vAiqeVb9",
+      "fotos": [
+        "assets/v5/retro/V5-RET-1C252DC8AC.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-RET-448A72F341",
+      "nombre": "Retro 15",
+      "categoria": "Retro",
+      "archivo": "d1d73c5d.jpg",
+      "drive_id": "18JFCMvyCthVVkMnxJJfTpwUybR2ttEKl",
+      "fotos": [
+        "assets/v5/retro/V5-RET-448A72F341.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-RET-AE20665C85",
+      "nombre": "Retro 16",
+      "categoria": "Retro",
+      "archivo": "e171437c.jpg",
+      "drive_id": "19m3ycFl8WvG6UE29288nfkzltMWP8d6O",
+      "fotos": [
+        "assets/v5/retro/V5-RET-AE20665C85.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-RET-5BAC9D115C",
+      "nombre": "Retro 17",
+      "categoria": "Retro",
+      "archivo": "f06a4c61.jpg",
+      "drive_id": "13f_wyvweGmutiPxo-dJzGLLK8wZE-43Q",
+      "fotos": [
+        "assets/v5/retro/V5-RET-5BAC9D115C.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-RET-1503CC5D8C",
+      "nombre": "Retro 18",
+      "categoria": "Retro",
+      "archivo": "fdb2db37.jpg",
+      "drive_id": "1vGz7_61T4_DC8G-f963piRXyPY7g7nF8",
+      "fotos": [
+        "assets/v5/retro/V5-RET-1503CC5D8C.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-FAN-FFC0FCA0F8",
+      "nombre": "Fan 01",
+      "categoria": "Fan",
+      "archivo": "Copia de IMG-20260910-WA0102.jpg",
+      "drive_id": "1GSDZaVEvp9i7HUrSeP-tKiGt_h0ilPtt",
+      "fotos": [
+        "assets/v5/fan/V5-FAN-FFC0FCA0F8.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-FAN-7BCE4D876B",
+      "nombre": "Fan 02",
+      "categoria": "Fan",
+      "archivo": "Copia de IMG-20260911-WA0025.jpg",
+      "drive_id": "1Q-9PSBmIWOcwXOqATO5PVleMtH-HevN5",
+      "fotos": [
+        "assets/v5/fan/V5-FAN-7BCE4D876B.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-FAN-F0823696E0",
+      "nombre": "Fan 03",
+      "categoria": "Fan",
+      "archivo": "Copia de IMG-20260911-WA0035.jpg",
+      "drive_id": "1dIoWb8TOCpZXrVeS-ysjt3I5hjjnKth4",
+      "fotos": [
+        "assets/v5/fan/V5-FAN-F0823696E0.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-FAN-D0D804B76C",
+      "nombre": "Fan 04",
+      "categoria": "Fan",
+      "archivo": "Copia de IMG-20260911-WA0045.jpg",
+      "drive_id": "1ob0fZu2K2OTtnthUO-XOAL6HKsmeIdLg",
+      "fotos": [
+        "assets/v5/fan/V5-FAN-D0D804B76C.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-FAN-D717FED66A",
+      "nombre": "Fan 05",
+      "categoria": "Fan",
+      "archivo": "Copia de IMG-20260911-WA0055.jpg",
+      "drive_id": "15w37IG8EUNTHAYOksBx7aEAMqofr0fjZ",
+      "fotos": [
+        "assets/v5/fan/V5-FAN-D717FED66A.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-FAN-2A0BB32064",
+      "nombre": "Fan 06",
+      "categoria": "Fan",
+      "archivo": "Copia de IMG-20260911-WA0065.jpg",
+      "drive_id": "13jknCVq2TzcSHb1JdfatbK4J-a6bBJbs",
+      "fotos": [
+        "assets/v5/fan/V5-FAN-2A0BB32064.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-FAN-26FA49B4AC",
+      "nombre": "Fan 07",
+      "categoria": "Fan",
+      "archivo": "IMG-20260911-WA0027.jpg",
+      "drive_id": "1_Vu8IdVrrB5yl0xKP2v5TIwIKCQpxKQ_",
+      "fotos": [
+        "assets/v5/fan/V5-FAN-26FA49B4AC.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-FAN-3880FD3E3A",
+      "nombre": "Fan 08",
+      "categoria": "Fan",
+      "archivo": "IMG-20260911-WA0039.jpg",
+      "drive_id": "1kq8xgp0IPPmyKZRr4qpr8qQ6O4E_riXt",
+      "fotos": [
+        "assets/v5/fan/V5-FAN-3880FD3E3A.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-FAN-98D0CBD36F",
+      "nombre": "Fan 09",
+      "categoria": "Fan",
+      "archivo": "IMG-20260911-WA0051.jpg",
+      "drive_id": "1rsAWViuVXKmZgK4F4Utd3EG0zOlI4QsN",
+      "fotos": [
+        "assets/v5/fan/V5-FAN-98D0CBD36F.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-FAN-7B9FE93077",
+      "nombre": "Fan 10",
+      "categoria": "Fan",
+      "archivo": "IMG-20260911-WA0062.jpg",
+      "drive_id": "1vuXmXgQbEwJ2i_C9EsSK7s5juluxZn_w",
+      "fotos": [
+        "assets/v5/fan/V5-FAN-7B9FE93077.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-FAN-E221BE30A4",
+      "nombre": "Fan 11",
+      "categoria": "Fan",
+      "archivo": "IMG-20260911-WA0074.jpg",
+      "drive_id": "19YDMRTNtQR3GuvZmB3_hv97AbIiMNPRS",
+      "fotos": [
+        "assets/v5/fan/V5-FAN-E221BE30A4.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-FAN-173EF88E22",
+      "nombre": "Fan 12",
+      "categoria": "Fan",
+      "archivo": "IMG-20260911-WA0086.jpg",
+      "drive_id": "1sc6_D9FPQio-lNG2MS3XopzccesvHfyV",
+      "fotos": [
+        "assets/v5/fan/V5-FAN-173EF88E22.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-FAN-CB5B054C59",
+      "nombre": "Fan 13",
+      "categoria": "Fan",
+      "archivo": "IMG-20260911-WA0098.jpg",
+      "drive_id": "1qApd9LMIHk_YEbToJToaI-fm3ln0xwYX",
+      "fotos": [
+        "assets/v5/fan/V5-FAN-CB5B054C59.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-FAN-9D9BC281F1",
+      "nombre": "Fan 14",
+      "categoria": "Fan",
+      "archivo": "IMG-20260911-WA0112.jpg",
+      "drive_id": "17PdTElFAAnxmeYZTNVXcYVz_HU_OExu0",
+      "fotos": [
+        "assets/v5/fan/V5-FAN-9D9BC281F1.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-FAN-F9E23278F8",
+      "nombre": "Fan 15",
+      "categoria": "Fan",
+      "archivo": "IMG-20260911-WA0126.jpg",
+      "drive_id": "1p4HzsnTrkAvmwUI05cFz-n2deEFPcqw3",
+      "fotos": [
+        "assets/v5/fan/V5-FAN-F9E23278F8.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-FAN-4D35BA267E",
+      "nombre": "Fan 16",
+      "categoria": "Fan",
+      "archivo": "IMG-20260911-WA0137.jpg",
+      "drive_id": "1-i-Bc6dd9EG8rRvtX2paNKbIMfFrNBww",
+      "fotos": [
+        "assets/v5/fan/V5-FAN-4D35BA267E.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-FAN-94823E778F",
+      "nombre": "Fan 17",
+      "categoria": "Fan",
+      "archivo": "IMG-20260911-WA0149.jpg",
+      "drive_id": "1iuOPE5Zmxe04vf66ANS8diMoqHVXrqqY",
+      "fotos": [
+        "assets/v5/fan/V5-FAN-94823E778F.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    },
+    {
+      "codigo": "V5-FAN-E640C83FC2",
+      "nombre": "Fan 18",
+      "categoria": "Fan",
+      "archivo": "IMG-20260911-WA0214.jpg",
+      "drive_id": "1uIoB4OXrJaYNLmFXzgVuEk2alAw0bD_l",
+      "fotos": [
+        "assets/v5/fan/V5-FAN-E640C83FC2.webp"
+      ],
+      "talles": [],
+      "precio": null,
+      "vista_previa": true
+    }
+  ]
+}

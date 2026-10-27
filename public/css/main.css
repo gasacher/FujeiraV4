@@ -2672,3 +2672,25 @@ body .text-secondary {
 .cart-drawer .cta-fujeira-outline {
   width: 100%;
 }
+
+.v5-aviso {
+  background: #14160c;
+  color: #f7f7f2;
+  border: 1px solid rgba(204, 255, 0, 0.45);
+  border-radius: 0.9rem;
+}
+
+.v5-aviso a {
+  color: #ccff00;
+}
+
+.v5-aviso__estado {
+  cursor: default;
+}
+
+.v5-aviso__estado:hover {
+  background: transparent;
+  color: #ccff00;
+  transform: none;
+  box-shadow: none;
+}

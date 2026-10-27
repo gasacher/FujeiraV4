@@ -8,24 +8,13 @@ use RuntimeException;
 class V5Catalog
 {
     /** @var list<string> */
-    public const REGION_ORDEN = [
-        'Europa',
-        'Selecciones',
-        'Brasil',
-        'Fútbol Argentino',
-        'Norteamérica / Resto del Mundo',
-        'Resto del Mundo',
-    ];
-
-    /** @var array<string, string> */
-    public const VERSIONES = [
-        'jugador' => 'Jugador',
-        'retro' => 'Retro',
-        'fan' => 'Fan',
-    ];
+    public const CATEGORIAS = ['Jugador', 'Retro', 'Fan'];
 
     /** @var Collection<string, V5Product>|null */
     private ?Collection $products = null;
+
+    /** @var array<string, mixed> */
+    private array $meta = [];
 
     public function all(): Collection
     {
@@ -37,106 +26,62 @@ class V5Catalog
         return $this->load()->get($codigo);
     }
 
-    public function filtrar(?string $texto, ?string $club, ?string $region, ?string $version): Collection
+    public function deCategoria(?string $categoria): Collection
     {
-        $texto = trim((string) $texto);
-        $club = trim((string) $club);
-        $region = trim((string) $region);
-        $version = trim((string) $version);
-
-        if ($version !== '' && ! array_key_exists($version, self::VERSIONES)) {
-            $version = '';
+        if ($categoria === null || $categoria === '' || $categoria === 'todos') {
+            return $this->all();
         }
 
         return $this->all()
-            ->filter(function (V5Product $product) use ($texto, $club, $region, $version) {
-                if ($club !== '' && $product->club !== $club) {
-                    return false;
-                }
-
-                if ($region !== '' && $product->region !== $region) {
-                    return false;
-                }
-
-                if ($version !== '' && $product->versionClave() !== $version) {
-                    return false;
-                }
-
-                return $texto === '' || $product->coincide($texto);
-            })
+            ->filter(fn (V5Product $product) => strcasecmp($product->categoria, $categoria) === 0)
             ->values();
     }
 
-    /** @return list<string> */
-    public function clubes(): array
+    public function buscar(?string $categoria, ?string $texto): Collection
     {
-        return $this->all()
-            ->map(fn (V5Product $product) => $product->club)
-            ->filter()
-            ->unique()
-            ->sort(fn (string $a, string $b) => strcasecmp($a, $b))
-            ->values()
-            ->all();
-    }
+        $productos = $this->deCategoria($categoria);
+        $texto = trim((string) $texto);
 
-    /** @return list<string> */
-    public function regiones(): array
-    {
-        $presentes = $this->all()
-            ->map(fn (V5Product $product) => $product->region)
-            ->filter()
-            ->unique()
-            ->values()
-            ->all();
-
-        $ordenadas = [];
-
-        foreach (self::REGION_ORDEN as $region) {
-            if (in_array($region, $presentes, true)) {
-                $ordenadas[] = $region;
-            }
+        if ($texto === '') {
+            return $productos;
         }
 
-        foreach ($presentes as $region) {
-            if (! in_array($region, $ordenadas, true)) {
-                $ordenadas[] = $region;
-            }
-        }
-
-        return $ordenadas;
-    }
-
-    /** @return list<array{region: string, total: int}> */
-    public function contarPorRegion(): array
-    {
-        $conteo = $this->all()->countBy(fn (V5Product $product) => $product->region);
-
-        return array_map(
-            fn (string $region) => ['region' => $region, 'total' => (int) ($conteo[$region] ?? 0)],
-            $this->regiones(),
-        );
-    }
-
-    public function destacados(int $limite = 8): Collection
-    {
-        $marcados = $this->all()->filter(fn (V5Product $product) => $product->destacado)->values();
-
-        if ($marcados->count() >= $limite) {
-            return $marcados->take($limite)->values();
-        }
-
-        return $marcados
-            ->concat($this->all()->reject(fn (V5Product $product) => $product->destacado))
-            ->take($limite)
+        return $productos
+            ->filter(fn (V5Product $product) => $product->coincide($texto))
             ->values();
     }
 
     public function relacionados(V5Product $producto, int $limite = 4): Collection
     {
         return $this->all()
-            ->filter(fn (V5Product $otro) => $otro->codigo !== $producto->codigo && $otro->club === $producto->club)
+            ->filter(fn (V5Product $otro) => $otro->codigo !== $producto->codigo
+                && strcasecmp($otro->categoria, $producto->categoria) === 0)
             ->take($limite)
             ->values();
+    }
+
+    /** @return array{muestra: bool, nota: string, origen: string, totales: array<string, int>, en_vista: array<string, int>} */
+    public function resumen(): array
+    {
+        $this->load();
+
+        $enVista = [];
+
+        foreach (self::CATEGORIAS as $categoria) {
+            $enVista[$categoria] = $this->deCategoria($categoria)->count();
+        }
+
+        $totales = is_array($this->meta['totales_en_drive'] ?? null)
+            ? $this->meta['totales_en_drive']
+            : [];
+
+        return [
+            'muestra' => (bool) ($this->meta['muestra'] ?? true),
+            'nota' => (string) ($this->meta['nota'] ?? ''),
+            'origen' => (string) ($this->meta['origen'] ?? ''),
+            'totales' => $totales,
+            'en_vista' => $enVista,
+        ];
     }
 
     /** @return Collection<string, V5Product> */
@@ -146,18 +91,22 @@ class V5Catalog
             return $this->products;
         }
 
-        $path = database_path('data/productos-importadas-g5.json');
-        $decoded = json_decode((string) file_get_contents($path), true);
+        $decoded = json_decode((string) file_get_contents(database_path('data/productos-v5.json')), true);
 
-        if (! is_array($decoded)) {
-            throw new RuntimeException('No se pudo leer el catálogo V5.');
+        if (! is_array($decoded) || ! is_array($decoded['productos'] ?? null)) {
+            throw new RuntimeException('No se pudo leer el catálogo v5.');
         }
 
+        $this->meta = $decoded;
         $products = collect();
 
-        foreach ($decoded as $row) {
+        foreach ($decoded['productos'] as $row) {
             if (! is_array($row) || empty($row['codigo'])) {
                 continue;
+            }
+
+            if (array_key_exists('precio', $row) && $row['precio'] !== null) {
+                throw new RuntimeException('La vista previa v5 no puede tener precios.');
             }
 
             $product = V5Product::fromArray($row);

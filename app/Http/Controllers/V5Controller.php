@@ -3,53 +3,38 @@
 namespace App\Http\Controllers;
 
 use App\Catalog\V5Catalog;
+use App\Catalog\V5Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\View\View;
 
 class V5Controller extends Controller
 {
-    private const POR_PAGINA = 24;
-
     public function home(V5Catalog $catalog): View
     {
+        $grupos = [];
+
+        foreach (V5Catalog::CATEGORIAS as $categoria) {
+            $grupos[$categoria] = $catalog->deCategoria($categoria)->take(4)->values();
+        }
+
         return view('v5.home', [
-            'total' => $catalog->all()->count(),
-            'regiones' => $catalog->contarPorRegion(),
-            'destacados' => $catalog->destacados(),
-            'versiones' => V5Catalog::VERSIONES,
+            'grupos' => $grupos,
+            'slides' => $this->slides($catalog),
         ]);
     }
 
     public function catalogo(Request $request, V5Catalog $catalog): View
     {
-        $filtros = $this->filtros($request);
-        $resultado = $catalog->filtrar($filtros['q'], $filtros['club'], $filtros['region'], $filtros['version']);
-        $porPagina = self::POR_PAGINA;
-        $ultima = max(1, (int) ceil(max($resultado->count(), 1) / $porPagina));
-        $pagina = min(max(1, (int) $request->query('page', 1)), $resultado->count() === 0 ? 1 : $ultima);
-
-        $paginator = new LengthAwarePaginator(
-            $resultado->forPage($pagina, $porPagina)->values(),
-            $resultado->count(),
-            $porPagina,
-            $pagina,
-            [
-                'path' => $request->url(),
-                'query' => $request->query(),
-                'pageName' => 'page',
-            ],
-        );
+        $categoria = $request->string('categoria')->toString();
+        $q = trim($request->string('q')->toString());
 
         return view('v5.catalogo', [
-            'productos' => $paginator,
-            'filtros' => $filtros,
-            'total' => $resultado->count(),
-            'clubes' => $catalog->clubes(),
-            'regiones' => $catalog->regiones(),
-            'versiones' => V5Catalog::VERSIONES,
+            'productos' => $catalog->buscar($categoria !== '' ? $categoria : null, $q),
+            'categoria' => $categoria,
+            'q' => $q,
+            'categorias' => V5Catalog::CATEGORIAS,
         ]);
     }
 
@@ -71,26 +56,50 @@ class V5Controller extends Controller
         if ($path === 'v5' || str_starts_with($path, 'v5/')) {
             $resto = ltrim(substr($path, strlen('v5')), '/');
 
-            return redirect('/'.$resto);
+            return redirect('/'.ltrim($resto, '/'));
         }
 
         return response()->view('v5.sin-cobro', [], 404);
     }
 
-    /** @return array{q: string, club: string, region: string, version: string} */
-    private function filtros(Request $request): array
+    /** @return list<array{modifier: string, titulo: string, producto: V5Product, izquierda: V5Product, derecha: V5Product, eager: bool}> */
+    private function slides(V5Catalog $catalog): array
     {
-        $version = trim($request->string('version')->toString());
+        $estilos = [
+            'Jugador' => 'diablos',
+            'Retro' => 'xeneizes',
+            'Fan' => 'cuervos',
+        ];
 
-        if (! array_key_exists($version, V5Catalog::VERSIONES)) {
-            $version = '';
+        $porCategoria = [];
+
+        foreach ($estilos as $categoria => $estilo) {
+            $porCategoria[$categoria] = $catalog->deCategoria($categoria)->first();
         }
 
-        return [
-            'q' => trim($request->string('q')->toString()),
-            'club' => trim($request->string('club')->toString()),
-            'region' => trim($request->string('region')->toString()),
-            'version' => $version,
-        ];
+        $slides = [];
+        $categorias = array_keys($estilos);
+
+        foreach ($categorias as $indice => $categoria) {
+            $producto = $porCategoria[$categoria] ?? null;
+
+            if (! $producto instanceof V5Product) {
+                continue;
+            }
+
+            $izquierda = $porCategoria[$categorias[($indice + 2) % 3]] ?? $producto;
+            $derecha = $porCategoria[$categorias[($indice + 1) % 3]] ?? $producto;
+
+            $slides[] = [
+                'modifier' => $estilos[$categoria],
+                'titulo' => mb_strtoupper($categoria),
+                'producto' => $producto,
+                'izquierda' => $izquierda,
+                'derecha' => $derecha,
+                'eager' => $indice === 0,
+            ];
+        }
+
+        return $slides;
     }
 }

@@ -37,3 +37,7 @@ El código del panel (Apps Script / fujeira-panel) no está en este repositorio.
 ## Stack
 
 Laravel 11 · PHP · Blade · SQLite · Mercado Pago Checkout Pro · Bootstrap 5
+
+## Vista previa v5
+
+El catálogo publicado no cambia. La muestra del catálogo nuevo está en `/v5`, con fotos y datos aparte (`database/data/productos-v5.json`). No tiene precio ni checkout. El subdominio se arma después, con los clics de `docs/v5-subdominio.md`.

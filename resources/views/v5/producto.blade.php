@@ -1,10 +1,11 @@
 @extends('v5.layout')
 
-@section('title', $producto->nombre.' | Vista previa V5')
-@section('description', $producto->nombre.'. '.$producto->club.'. '.$producto->region.'. '.$producto->version.'. Vista previa, sin cobro.')
+@section('title', $producto->nombre.' | Vista previa FUJEIRA')
+@section('description', $producto->nombre.'. Vista previa del catálogo nuevo, sin precio y sin compra.')
+@section('body-class', 'product-page')
 
 @section('content')
-<section class="py-4">
+<section class="py-5">
   <div class="container">
     <nav class="product-breadcrumb mb-4" aria-label="Migas de pan">
       <a href="{{ \App\Support\V5Urls::to('home') }}">Inicio</a>
@@ -13,72 +14,44 @@
       <span aria-hidden="true">/</span>
       <span>{{ $producto->nombre }}</span>
     </nav>
-
     <div class="row g-4">
       <div class="col-md-6">
-        <div class="v5-hero-photo">
-          @if ($producto->tieneFoto())
-            <img src="{{ $producto->fotoPublica() }}" alt="{{ $producto->nombre }}" width="800" height="1000" fetchpriority="high" decoding="async">
-          @else
-            @include('v5.partials.missing-photo', ['producto' => $producto])
-          @endif
+        <div class="product-gallery">
+          <div class="product-gallery__hero">
+            <img id="mainProductImg" src="{{ $producto->fotoPublica() }}" alt="{{ $producto->nombre }}" class="product-main-img" width="800" height="1000" fetchpriority="high" decoding="async">
+          </div>
         </div>
       </div>
       <div class="col-md-6 text-light">
-        <p class="v5-kicker">Vista previa</p>
+        <p class="catalog-product-category">{{ $producto->categoria }}</p>
         <h1 class="product-title">{{ $producto->nombre }}</h1>
-        <dl class="v5-facts">
-          <div>
-            <dt>Club</dt>
-            <dd>{{ $producto->club }}</dd>
-          </div>
-          <div>
-            <dt>Región</dt>
-            <dd>{{ $producto->region }}</dd>
-          </div>
-          <div>
-            <dt>Versión</dt>
-            <dd>{{ $producto->version }}</dd>
-          </div>
-          <div>
-            <dt>Código</dt>
-            <dd>{{ $producto->codigo }}</dd>
-          </div>
-          @if ($producto->talles !== [])
-            <div>
-              <dt>Talles</dt>
-              <dd>{{ implode(', ', $producto->talles) }}</dd>
-            </div>
-          @endif
-        </dl>
-
-        @if ($producto->precio !== null)
-          <p class="v5-price">${{ number_format($producto->precio, 0, ',', '.') }}</p>
-          <p class="v5-price-note">Precio del catálogo. En esta vista previa no se cobra.</p>
-        @else
-          <p class="v5-price-note">Este modelo no trae precio en el catálogo.</p>
+        <p class="product-code">Código {{ $producto->codigo }}</p>
+        @if ($producto->archivo !== '')
+          <p class="small mb-3">Archivo en el Drive: {{ $producto->archivo }}</p>
         @endif
-
-        @if ($producto->porEncargo())
-          <p class="mb-0">Por encargo. Todavía no se puede comprar desde esta ficha.</p>
-        @endif
-
-        <p class="mt-4 mb-0">
-          <a href="{{ \App\Support\V5Urls::catalogo(['club' => $producto->club]) }}">Ver más de {{ $producto->club }}</a>
-        </p>
+        <p class="product-desc">Foto de la muestra del catálogo nuevo. El nombre sale del archivo, sin el prefijo de WhatsApp ni el código suelto.</p>
+        <div class="mt-3">
+          <p class="fw-bold mb-1">Talle</p>
+          <p class="mb-0">a definir</p>
+        </div>
+        <div class="mt-3">
+          <p class="fw-bold mb-1">Precio</p>
+          <p class="mb-0">a definir</p>
+        </div>
+        <p class="cta-fujeira-outline v5-aviso__estado mt-4" role="status">Vista previa, sin compra</p>
       </div>
     </div>
 
-    @if ($relacionados->isNotEmpty())
-      <div class="related-section mt-5">
-        <h2 class="h4">Otras de {{ $producto->club }}</h2>
-        <div class="row g-4">
-          @foreach ($relacionados as $relacionado)
-            <div class="col-6 col-md-3">@include('v5.partials.card', ['producto' => $relacionado])</div>
-          @endforeach
-        </div>
+    <div class="related-section mt-5">
+      <h2 class="text-light mb-3">También en {{ $producto->categoria }}</h2>
+      <div class="row g-4">
+        @forelse ($relacionados as $relacionado)
+          <div class="col-6 col-md-3">@include('v5.partials.card', ['producto' => $relacionado])</div>
+        @empty
+          <p class="text-light">No hay más fotos de esta muestra en la categoría.</p>
+        @endforelse
       </div>
-    @endif
+    </div>
   </div>
 </section>
 @endsection

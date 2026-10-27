@@ -20,4 +20,13 @@ class V5Urls
 
         return self::to('catalogo', $query);
     }
+
+    public static function tiendaActual(): string
+    {
+        if (V5Host::matches()) {
+            return 'https://fujeiraretrostore.com/';
+        }
+
+        return route('home');
+    }
 }
