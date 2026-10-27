@@ -6,8 +6,17 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\MercadoPagoWebhookController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\StorefrontController;
+use App\Http\Controllers\V5Controller;
+use App\Support\V5Host;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+Route::domain(V5Host::HOST)->group(function () {
+    Route::get('/', [V5Controller::class, 'home'])->name('v5.host.home');
+    Route::get('/catalogo', [V5Controller::class, 'catalogo'])->name('v5.host.catalogo');
+    Route::get('/producto/{codigo}', [V5Controller::class, 'producto'])->name('v5.host.producto');
+    Route::any('/{path}', [V5Controller::class, 'sinCobro'])->where('path', '.*');
+});
 
 Route::get('/', [StorefrontController::class, 'home'])->name('home');
 Route::get('/catalogo', [StorefrontController::class, 'catalogo'])->name('catalogo');
@@ -55,3 +64,10 @@ Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.s
 Route::get('/pago/{estado}', [CheckoutController::class, 'pago'])->name('pago.show');
 
 Route::post('/webhooks/mercadopago', MercadoPagoWebhookController::class)->name('webhooks.mercadopago');
+
+// Vista previa del catálogo nuevo. No reemplaza /, /catalogo ni /producto/{codigo}.
+Route::prefix('v5')->name('v5.')->group(function () {
+    Route::get('/', [V5Controller::class, 'home'])->name('home');
+    Route::get('/catalogo', [V5Controller::class, 'catalogo'])->name('catalogo');
+    Route::get('/producto/{codigo}', [V5Controller::class, 'producto'])->name('producto');
+});
