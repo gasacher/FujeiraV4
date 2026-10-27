@@ -29,15 +29,9 @@ En `.env`, `MP_ACCESS_TOKEN` es el Access Token nuevo de Mercado Pago, el que qu
 
 ## Hostinger
 
-El dominio tiene que apuntar a la carpeta `public` (ahí está `index.php`). El resto del proyecto —`app`, `vendor`, `.env`— queda fuera de esa carpeta pública.
+Esta versión se sube dentro de `public_html`. El catálogo es el de Retro Series y cuadros que ya está en `database/data`. Los pasos, en orden, están en `SUBIR-A-HOSTINGER.txt`.
 
-1. Subí el proyecto.
-2. En hPanel, la raíz del sitio tiene que ser `public`. Si el plan no deja cambiarla, mové el contenido de `public` a `public_html` y el resto del proyecto un nivel arriba, ajustando las rutas de `public/index.php`.
-3. Creá el `.env` en el servidor, con `APP_KEY`, `APP_URL=https://fujeiraretrostore.com` y `MP_ACCESS_TOKEN`.
-4. Ejecutá `php artisan migrate`.
-5. `storage` y `bootstrap/cache` tienen que poder escribir.
-
-Para MySQL de Hostinger, en `.env` usá `DB_CONNECTION=mysql` y los datos de la base. En local puede quedar `sqlite`.
+El archivo `.env` se crea en el servidor. `MP_ACCESS_TOKEN` es el Access Token nuevo. No lo subas a GitHub.
 
 ---
 

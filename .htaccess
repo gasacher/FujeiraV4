@@ -1,5 +1,7 @@
-# Stop browsers from downloading env files or a leftover local token file.
-<FilesMatch "^\.env($|\.)|^config-mp\.local\.php$">
+# Hostinger: the site can live inside public_html. Laravel stays in this folder.
+DirectoryIndex index.php
+
+<FilesMatch "^\.env($|\.)|^config-mp\.local\.php$|^composer\.(json|lock)$|^artisan$">
   <IfModule mod_authz_core.c>
     Require all denied
   </IfModule>
@@ -8,3 +10,15 @@
     Deny from all
   </IfModule>
 </FilesMatch>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  RewriteRule ^(app|bootstrap|config|database|legacy|resources|routes|storage|tests|vendor)(/|$) - [F,L]
+
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  RewriteRule ^ index.php [L]
+</IfModule>
