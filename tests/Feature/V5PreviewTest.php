@@ -30,13 +30,21 @@ class V5PreviewTest extends TestCase
             ->assertSee('689')
             ->assertSee('Europa')
             ->assertSee('358')
+            ->assertSee('Inter Miami CF')
+            ->assertSee('Suplente Negra/Rosa')
             ->assertDontSee('Mercado Pago')
-            ->assertDontSee('Agregar al carrito');
+            ->assertDontSee('Agregar al carrito')
+            ->assertDontSee('MYSQL_ATTR_SSL_CA');
 
         $this->get('/v5/catalogo')
             ->assertOk()
+            ->assertSee('689 camisetas')
+            ->assertSee('Inter Miami CF')
+            ->assertSee('Suplente Negra/Rosa')
             ->assertSee('IMP-FAN-001')
-            ->assertDontSee('FU-01');
+            ->assertDontSee('FU-01')
+            ->assertDontSee('No hay camisetas')
+            ->assertDontSee('MYSQL_ATTR_SSL_CA');
 
         $this->get('/v5/catalogo?page=2')
             ->assertOk()
@@ -160,5 +168,35 @@ class V5PreviewTest extends TestCase
         $this->assertFalse($producto->tieneFoto());
         $this->assertNull($producto->fotoPublica());
         $this->assertNull($producto->miniaturaPublica());
+    }
+
+    public function test_database_config_does_not_read_the_deprecated_mysql_ssl_constant_on_php_85(): void
+    {
+        $source = file_get_contents(config_path('database.php'));
+
+        $this->assertStringContainsString("defined('Pdo\\Mysql::ATTR_SSL_CA')", $source);
+        $this->assertDoesNotMatchRegularExpression('/^\s*PDO::MYSQL_ATTR_SSL_CA\s*=>/m', $source);
+
+        $deprecations = [];
+        set_error_handler(function (int $level, string $message) use (&$deprecations): bool {
+            if (in_array($level, [E_DEPRECATED, E_USER_DEPRECATED], true)) {
+                $deprecations[] = $message;
+
+                return true;
+            }
+
+            return false;
+        });
+
+        try {
+            $config = include config_path('database.php');
+        } finally {
+            restore_error_handler();
+        }
+
+        $this->assertSame([], $deprecations);
+        $this->assertIsArray($config['connections']['mysql']['options']);
+        $this->assertIsArray($config['connections']['mariadb']['options']);
+        $this->assertSame('sqlite', $config['connections']['sqlite']['driver']);
     }
 }

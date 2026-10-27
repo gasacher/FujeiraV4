@@ -2,6 +2,28 @@
 
 use Illuminate\Support\Str;
 
+/**
+ * PDO::MYSQL_ATTR_SSL_CA is deprecated on PHP 8.5. Pdo\Mysql::ATTR_SSL_CA
+ * exists since PHP 8.4, so the old constant is only read on 8.2 and 8.3.
+ */
+$mysqlSslOptions = static function (): array {
+    if (! extension_loaded('pdo_mysql')) {
+        return [];
+    }
+
+    $attribute = defined('Pdo\Mysql::ATTR_SSL_CA')
+        ? \Pdo\Mysql::ATTR_SSL_CA
+        : (defined('PDO::MYSQL_ATTR_SSL_CA') ? PDO::MYSQL_ATTR_SSL_CA : null);
+
+    if ($attribute === null) {
+        return [];
+    }
+
+    return array_filter([
+        $attribute => env('MYSQL_ATTR_SSL_CA'),
+    ]);
+};
+
 return [
 
     /*
@@ -57,9 +79,7 @@ return [
             'prefix_indexes' => true,
             'strict' => true,
             'engine' => null,
-            'options' => extension_loaded('pdo_mysql') ? array_filter([
-                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-            ]) : [],
+            'options' => $mysqlSslOptions(),
         ],
 
         'mariadb' => [
@@ -77,9 +97,7 @@ return [
             'prefix_indexes' => true,
             'strict' => true,
             'engine' => null,
-            'options' => extension_loaded('pdo_mysql') ? array_filter([
-                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-            ]) : [],
+            'options' => $mysqlSslOptions(),
         ],
 
         'pgsql' => [
