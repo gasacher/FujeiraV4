@@ -1469,7 +1469,8 @@ body {
   font-size: 0.65rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  opacity: 0.45;
+  color: #f2f2f2;
+  opacity: 1;
   margin-bottom: 1.6rem;
 }
 #destacados #destacados .cta-fujeira-outline {
@@ -2523,4 +2524,151 @@ body {
 }
 .related-card:hover .related-img {
   transform: scale(1.03);
+}
+
+.catalog-product-card > a,
+.catalog-card-link {
+  color: #f7f7f7;
+}
+
+.home-page .catalog-product-category,
+.catalog-page .catalog-product-category,
+.cuadro-card .catalog-product-category {
+  color: #f3f3f3;
+  opacity: 1;
+}
+
+.home-page .catalog-product-category--retro-series,
+.catalog-page .catalog-product-category--retro-series,
+#destacados .catalog-product-category--retro-series {
+  color: #d6ff4a;
+  opacity: 1;
+}
+
+.home-kicker {
+  color: #f4f4f4;
+  letter-spacing: 0.08em;
+}
+
+body .text-muted,
+body .text-secondary {
+  color: #e4e4e4 !important;
+}
+
+.product-page .form-label,
+.product-page .product-code,
+.product-page .small {
+  color: #f0f0f0;
+}
+
+.product-breadcrumb {
+  color: #f2f2f2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  font-size: 0.9rem;
+}
+
+.product-breadcrumb a {
+  color: #d6ff4a;
+  text-decoration: none;
+}
+
+.search-field {
+  position: relative;
+  width: min(100%, 420px);
+}
+
+.search-live {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 0.35rem);
+  left: 0;
+  right: 0;
+  background: #121418;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 0.8rem;
+  overflow: hidden;
+}
+
+.search-live__item,
+.search-live__empty {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem 0.9rem;
+  color: #f7f7f7;
+  text-decoration: none;
+}
+
+.search-live__item small,
+.search-live__empty {
+  color: #d5d5d5;
+}
+
+.search-live__item:hover {
+  background: rgba(204, 255, 0, 0.12);
+  color: #fff;
+}
+
+.hero-photo.is-manual .hero-slide {
+  animation: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.hero-photo.is-manual .hero-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 1;
+}
+
+.instagram-strip {
+  background: #050608;
+  padding: 4rem 0 1rem;
+}
+
+.fj-pill {
+  display: inline-block;
+  margin-bottom: 0.8rem;
+  color: #d6ff4a;
+  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+}
+
+.insta-item {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 0.6rem;
+  background: #111;
+}
+
+.insta-link {
+  display: block;
+  height: 100%;
+}
+
+.product-thumb-btn {
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  background: #000;
+  line-height: 0;
+}
+
+.product-thumb-btn.is-active,
+.product-thumb-btn:hover {
+  border-color: #CCFF00;
+}
+
+.cart-drawer {
+  background: #0d0f12;
+  color: #f8f9fa;
+}
+
+.cart-drawer .cta-fujeira,
+.cart-drawer .cta-fujeira-outline {
+  width: 100%;
 }

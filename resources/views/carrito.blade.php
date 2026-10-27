@@ -1,6 +1,8 @@
 @extends('layouts.store')
 
 @section('title', 'Carrito | FUJEIRA')
+@section('description', 'Tu carrito en FUJEIRA. El envío se confirma por WhatsApp después del pago.')
+@section('canonical', \App\Support\Site::url('/carrito'))
 
 @section('content')
 <section class="py-5">
@@ -14,7 +16,7 @@
         <div class="cart-item d-flex gap-3 align-items-center mb-3">
           <img src="{{ $linea['product']->fotoPublica() }}" alt="" width="72" class="cart-item-img">
           <div class="flex-grow-1">
-            <p class="cart-item-name mb-1">{{ $linea['product']->nombre }}</p>
+            <p class="cart-item-name mb-1">{{ $linea['product']->nombreVisible() }}</p>
             <p class="mb-1">
               @if ($linea['marco']) Marco: {{ $linea['marco'] }} @elseif ($linea['talle']) Talle: {{ $linea['talle'] }} @endif
             </p>
@@ -34,7 +36,9 @@
         </div>
       @endforeach
       <p class="fs-4 text-end">Total: ${{ number_format($total, 0, ',', '.') }}</p>
-      <div class="text-end">
+      <p class="text-end small mb-3">El envío se confirma por WhatsApp después del pago.</p>
+      <div class="d-flex justify-content-end flex-wrap gap-3">
+        <a class="cta-fujeira-outline" href="{{ route('catalogo') }}">Seguir comprando</a>
         <a class="cta-fujeira" href="{{ route('checkout.show') }}">Pagar con Mercado Pago</a>
       </div>
     @endif

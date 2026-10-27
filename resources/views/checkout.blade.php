@@ -1,6 +1,8 @@
 @extends('layouts.store')
 
 @section('title', 'Checkout | FUJEIRA')
+@section('description', 'Datos de envío y pago con Mercado Pago. FUJEIRA confirma el envío por WhatsApp después del pago.')
+@section('canonical', \App\Support\Site::url('/checkout'))
 
 @section('content')
 <section class="py-5">
@@ -39,11 +41,16 @@
         <h2 class="h4">Pedido</h2>
         <ul class="list-unstyled">
           @foreach ($lineas as $linea)
-            <li class="mb-2">{{ $linea['cantidad'] }} × {{ $linea['product']->nombre }} — ${{ number_format($linea['subtotal'], 0, ',', '.') }}</li>
+            <li class="mb-2">
+              {{ $linea['cantidad'] }} × {{ $linea['product']->nombreVisible() }}
+              @if ($linea['talle']) — Talle {{ $linea['talle'] }} @endif
+              @if ($linea['marco']) — Marco {{ $linea['marco'] }} @endif
+              — ${{ number_format($linea['subtotal'], 0, ',', '.') }}
+            </li>
           @endforeach
         </ul>
         <p class="fs-4">Total: ${{ number_format($total, 0, ',', '.') }}</p>
-        <p class="small text-muted">El precio lo define el catálogo del servidor. El envío se confirma por WhatsApp.</p>
+        <p class="small">El precio lo define el catálogo del servidor. El envío se confirma por WhatsApp después del pago.</p>
       </div>
     </div>
   </div>

@@ -1,6 +1,8 @@
 @extends('layouts.store')
 
 @section('title', 'Nosotros | FUJEIRA')
+@section('description', 'FUJEIRA diseña remeras Retro Series y cuadros de arte futbolero. Diseños que nacen del apodo, la fecha y la mística de la tribuna.')
+@section('canonical', \App\Support\Site::url('/nosotros'))
 @section('body-class', 'inner-page nosotros-page')
 
 @section('content')
@@ -15,7 +17,7 @@
     </header>
     <div class="row g-4 mt-4 align-items-center">
       <div class="col-md-6">
-        <img src="{{ asset('assets/img/retroseries_serie01.png') }}" alt="Fujeira Retro Series" class="img-fluid">
+        <img src="{{ \App\Support\Site::image('assets/img/retroseries_serie01.png') }}" alt="Fujeira Retro Series" class="img-fluid" width="900" height="1200" loading="lazy" decoding="async">
       </div>
       <div class="col-md-6">
         <p>FUJEIRA es una marca de remeras de diseño propio y cuadros de arte futbolero. La línea Retro Series toma apodos, fechas y colores de la tribuna y los convierte en prendas de edición limitada.</p>

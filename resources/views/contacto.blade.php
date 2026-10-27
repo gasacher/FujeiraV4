@@ -1,6 +1,8 @@
 @extends('layouts.store')
 
 @section('title', 'Contacto | FUJEIRA')
+@section('description', 'Escribinos a FUJEIRA por WhatsApp o a fujeiraretrostore@gmail.com.')
+@section('canonical', \App\Support\Site::url('/contacto'))
 @section('body-class', 'contact-page')
 
 @section('content')

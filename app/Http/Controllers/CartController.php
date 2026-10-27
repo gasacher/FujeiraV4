@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cart\CartSession;
+use App\Catalog\Catalog;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -17,7 +18,7 @@ class CartController extends Controller
         ]);
     }
 
-    public function add(Request $request, CartSession $cart): RedirectResponse
+    public function add(Request $request, CartSession $cart, Catalog $catalog): RedirectResponse
     {
         $data = $request->validate([
             'codigo' => ['required', 'string', 'max:40'],
@@ -37,7 +38,9 @@ class CartController extends Controller
             return back()->withErrors(['carrito' => $error]);
         }
 
-        return redirect()->route('carrito.show')->with('ok', 'Producto agregado al carrito.');
+        $producto = $catalog->find($data['codigo']);
+
+        return back()->with('agregado', $producto?->nombreVisible() ?? 'El producto');
     }
 
     public function update(Request $request, CartSession $cart, int $index): RedirectResponse

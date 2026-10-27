@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Catalog\Catalog;
+use App\Catalog\Product;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -16,16 +17,24 @@ class StorefrontController extends Controller
                 ->filter(fn ($product) => $product->categoria === 'cuadros')
                 ->take(4)
                 ->values(),
+            'indice' => $catalog->all()->map(fn (Product $product) => [
+                'nombre' => $product->nombreVisible(),
+                'codigo' => $product->codigo,
+                'categoria' => $product->categoria,
+                'url' => route('producto.show', $product->codigo),
+            ])->values(),
         ]);
     }
 
     public function catalogo(Request $request, Catalog $catalog): View
     {
         $categoria = $request->string('categoria')->toString();
+        $q = trim($request->string('q')->toString());
 
         return view('catalogo', [
-            'productos' => $catalog->deCategoria($categoria !== '' ? $categoria : null),
+            'productos' => $catalog->buscar($categoria !== '' ? $categoria : null, $q),
             'categoria' => $categoria,
+            'q' => $q,
         ]);
     }
 
@@ -34,7 +43,10 @@ class StorefrontController extends Controller
         $producto = $catalog->find($codigo);
         abort_if($producto === null, 404);
 
-        return view('producto', ['producto' => $producto]);
+        return view('producto', [
+            'producto' => $producto,
+            'relacionados' => $catalog->relacionados($producto),
+        ]);
     }
 
     public function nosotros(): View

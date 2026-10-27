@@ -18,6 +18,17 @@
     RewriteCond %{REQUEST_URI} (.+)/$
     RewriteRule ^ %1 [L,R=301]
 
+    RewriteRule ^index\.html$ / [R=301,L]
+    RewriteRule ^catalogo\.html$ /catalogo [R=301,L]
+    RewriteRule ^nosotros\.html$ /nosotros [R=301,L]
+    RewriteRule ^faqs\.html$ /faqs [R=301,L]
+    RewriteRule ^contacto\.html$ /contacto [R=301,L]
+    RewriteRule ^pago-exitoso\.html$ /pago/exitoso [R=301,L]
+    RewriteRule ^pago-pendiente\.html$ /pago/pendiente [R=301,L]
+    RewriteRule ^pago-fallido\.html$ /pago/fallido [R=301,L]
+    RewriteRule ^producto\.html$ index.php [L]
+    RewriteRule ^api/crear-preferencia\.php$ - [G,L]
+
     # Send Requests To Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f

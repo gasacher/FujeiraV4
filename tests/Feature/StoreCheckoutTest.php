@@ -19,7 +19,10 @@ class StoreCheckoutTest extends TestCase
             ->assertSee('hero-slide__mockup', false)
             ->assertSee('id="destacados"', false)
             ->assertSee('Cuadros destacados')
-            ->assertDontSee('DEC-CUA-05');
+            ->assertSee('hero-nav--next', false)
+            ->assertSee('instagram-strip', false)
+            ->assertSee('id="searchInput"', false)
+            ->assertSee('rel="preconnect"', false);
     }
 
     public function test_catalog_filters_retro_series(): void
@@ -53,11 +56,11 @@ class StoreCheckoutTest extends TestCase
             ], 201),
         ]);
 
-        $this->post('/carrito', [
+        $this->from('/producto/FU-01')->post('/carrito', [
             'codigo' => 'FU-01',
             'talle' => 'L',
             'cantidad' => 2,
-        ])->assertRedirect('/carrito');
+        ])->assertRedirect('/producto/FU-01')->assertSessionHas('agregado');
 
         $response = $this->post('/checkout', [
             'nombre' => 'Ana',

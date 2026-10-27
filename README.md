@@ -30,6 +30,10 @@ El pedido se registra antes de salir a pagar. El pago se acepta cuando la moneda
 
 La interfaz usa la tipografía y la paleta de la marca, en una grilla que se acomoda al teléfono y al escritorio.
 
+## Panel de Google
+
+El código del panel (Apps Script / fujeira-panel) no está en este repositorio. La tienda Laravel no lo llama. El sitio viejo, en `legacy/js/orders.js`, pegaba pedidos a un Web App de Google sin secreto. Cómo cerrarlo está en `docs/panel-google.md`. El secreto no se commitea.
+
 ## Stack
 
 Laravel 11 · PHP · Blade · SQLite · Mercado Pago Checkout Pro · Bootstrap 5

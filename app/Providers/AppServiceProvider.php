@@ -16,7 +16,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer('layouts.store', function ($view) {
-            $view->with('cartCount', app(CartSession::class)->count());
+            $cart = app(CartSession::class);
+            $view->with('cartCount', $cart->count());
+            $view->with('cartLineas', $cart->detailed());
+            $view->with('cartTotal', $cart->total());
         });
     }
 }

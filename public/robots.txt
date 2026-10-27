@@ -3,5 +3,6 @@ Allow: /
 Disallow: /checkout
 Disallow: /pago/
 Disallow: /carrito
+Disallow: /api/
 
 Sitemap: https://fujeiraretrostore.com/sitemap.xml

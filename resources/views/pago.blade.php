@@ -1,6 +1,8 @@
 @extends('layouts.store')
 
 @section('title', 'Pago | FUJEIRA')
+@section('description', 'Estado del pago en FUJEIRA. El envío se confirma por WhatsApp.')
+@section('canonical', \App\Support\Site::url('/pago/'.$estado))
 
 @section('content')
 <section class="py-5">

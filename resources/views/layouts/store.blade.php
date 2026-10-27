@@ -3,13 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>@yield('title', 'FUJEIRA | Remeras de diseño propio, cuadros y arte futbolero')</title>
-  <meta name="description" content="@yield('description', 'FUJEIRA: remeras de diseño propio, cuadros y arte futbolero. Fujeira Retro Series y envíos en Argentina.')">
-  <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon_fujeira.png') }}">
+  @php
+    $pageTitle = trim($__env->yieldContent('title'));
+    if ($pageTitle === '') {
+        $pageTitle = 'FUJEIRA | Remeras de diseño propio, cuadros y arte futbolero';
+    }
+    $pageDescription = trim($__env->yieldContent('description'));
+    if ($pageDescription === '') {
+        $pageDescription = 'FUJEIRA: remeras de diseño propio, cuadros y arte futbolero. Fujeira Retro Series y envíos en Argentina.';
+    }
+    $canonical = trim($__env->yieldContent('canonical'));
+    if ($canonical === '') {
+        $canonical = \App\Support\Site::url(request()->getPathInfo() ?: '/');
+    }
+    $ogImage = trim($__env->yieldContent('og-image'));
+    if ($ogImage === '') {
+        $ogImage = \App\Support\Site::imageAbsolute('assets/img/Logolima_transparente.png');
+    }
+    $ogType = trim($__env->yieldContent('og-type')) ?: 'website';
+  @endphp
+  <title>{{ $pageTitle }}</title>
+  <meta name="description" content="{{ $pageDescription }}">
+  <link rel="canonical" href="{{ $canonical }}">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:site_name" content="FUJEIRA">
+  <meta property="og:type" content="{{ $ogType }}">
+  <meta property="og:title" content="{{ $pageTitle }}">
+  <meta property="og:description" content="{{ $pageDescription }}">
+  <meta property="og:url" content="{{ $canonical }}">
+  <meta property="og:image" content="{{ $ogImage }}">
+  <meta property="og:image:alt" content="{{ $pageTitle }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ $pageTitle }}">
+  <meta name="twitter:description" content="{{ $pageDescription }}">
+  <meta name="twitter:image" content="{{ $ogImage }}">
+  <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon-site.png') }}">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;500;700&family=League+Spartan:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="{{ asset('css/main.css') }}?v=laravel1">
+  <link rel="stylesheet" href="{{ asset('css/main.css') }}?v=tienda2">
+  @stack('head')
 </head>
 <body class="@yield('body-class')">
   <a class="skip-to-content" href="#contenido-principal">Saltar al contenido</a>
@@ -17,7 +53,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-fujeira">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center gap-2" href="{{ route('home') }}">
-        <img src="{{ asset('assets/img/Logolima_transparente.png') }}" class="logo-fujeira" alt="FUJEIRA Logo">
+        <img src="{{ \App\Support\Site::image('assets/img/Logolima_transparente.png') }}" class="logo-fujeira" alt="FUJEIRA Logo" width="64" height="64">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
         <span class="navbar-toggler-icon"></span>
@@ -57,7 +93,7 @@
     <div class="container py-4">
       <div class="row g-4 align-items-center">
         <div class="col-md-3 text-center text-md-start">
-          <img src="{{ asset('assets/img/Logo_negro.png') }}" class="footer-logo mb-2" alt="FUJEIRA Logo">
+          <img src="{{ \App\Support\Site::image('assets/img/Logo_negro.png') }}" class="footer-logo mb-2" alt="FUJEIRA Logo" width="64" height="64" loading="lazy" decoding="async">
           <p class="footer-claim small mt-2 mb-0">“FUJEIRA. Como lo dijo el Diego.<br>Si así lo dijo, así queda.”</p>
         </div>
         <div class="col-md-6 text-center">
@@ -82,6 +118,40 @@
   <a href="https://wa.me/5491130124589" class="btn-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
     <i class="bi bi-whatsapp"></i>
   </a>
+
+  <div class="offcanvas offcanvas-end cart-drawer text-light" tabindex="-1" id="cartDrawer" aria-labelledby="cartDrawerLabel" @if (session('agregado')) data-show="1" @endif>
+    <div class="offcanvas-header">
+      <h2 class="offcanvas-title h5" id="cartDrawerLabel">Lo sumaste al carrito</h2>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column">
+      @if (session('agregado'))
+        <p class="cart-msg-title">{{ session('agregado') }}</p>
+      @endif
+      @forelse ($cartLineas as $linea)
+        <div class="d-flex gap-3 mb-3">
+          <img src="{{ $linea['product']->fotoPublica() }}" alt="" width="64" height="64" class="cart-thumb">
+          <div>
+            <p class="mb-1">{{ $linea['product']->nombreVisible() }}</p>
+            <p class="mb-0 small">
+              @if ($linea['talle']) Talle {{ $linea['talle'] }} @endif
+              @if ($linea['marco']) Marco {{ $linea['marco'] }} @endif
+              · {{ $linea['cantidad'] }} · ${{ number_format($linea['subtotal'], 0, ',', '.') }}
+            </p>
+          </div>
+        </div>
+      @empty
+        <p>Tu carrito está vacío.</p>
+      @endforelse
+      <p class="text-end fs-5 mt-auto">Total: ${{ number_format($cartTotal, 0, ',', '.') }}</p>
+      <div class="d-flex flex-column gap-2">
+        <button class="cta-fujeira-outline" type="button" data-bs-dismiss="offcanvas">Seguir comprando</button>
+        <a class="cta-fujeira text-center" href="{{ route('carrito.show') }}">Ver carrito</a>
+      </div>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{{ asset('js/tienda.js') }}?v=tienda2"></script>
 </body>
 </html>

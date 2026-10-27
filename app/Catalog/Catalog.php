@@ -65,6 +65,49 @@ class Catalog
             }
         }
 
+        $counts = [];
+
+        foreach ($products as $product) {
+            $key = mb_strtolower($product->nombre);
+            $counts[$key] = ($counts[$key] ?? 0) + 1;
+        }
+
+        $products = $products->map(function (Product $product) use ($counts) {
+            $key = mb_strtolower($product->nombre);
+
+            if (($counts[$key] ?? 0) < 2) {
+                return $product;
+            }
+
+            return $product->conEtiqueta($product->nombre.' · '.$product->codigo);
+        });
+
         return $this->products = $products;
+    }
+
+    public function relacionados(Product $producto, int $limite = 4): Collection
+    {
+        return $this->all()
+            ->filter(function (Product $otro) use ($producto) {
+                return $otro->codigo !== $producto->codigo
+                    && strcasecmp($otro->categoria, $producto->categoria) === 0
+                    && $otro->fotos !== [];
+            })
+            ->take($limite)
+            ->values();
+    }
+
+    public function buscar(?string $categoria, ?string $texto): Collection
+    {
+        $productos = $this->deCategoria($categoria);
+        $texto = trim((string) $texto);
+
+        if ($texto === '') {
+            return $productos;
+        }
+
+        return $productos
+            ->filter(fn (Product $product) => $product->coincide($texto))
+            ->values();
     }
 }
