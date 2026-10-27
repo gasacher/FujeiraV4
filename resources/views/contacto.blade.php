@@ -1,6 +1,7 @@
 @extends('layouts.store')
 
 @section('title', 'Contacto | FUJEIRA')
+@section('body-class', 'contact-page')
 
 @section('content')
 <section class="section-contact py-5">
@@ -14,7 +15,7 @@
         </a>
         <hr class="my-5">
         <p class="mb-2"><strong>¿Preferís escribir por mail?</strong></p>
-        <p><a href="mailto:fujeiraretrostore@gmail.com">fujeiraretrostore@gmail.com</a></p>
+        <p><a class="contact-mail" href="mailto:fujeiraretrostore@gmail.com">fujeiraretrostore@gmail.com</a></p>
       </div>
     </div>
   </div>

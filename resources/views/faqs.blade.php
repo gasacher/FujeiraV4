@@ -1,9 +1,10 @@
 @extends('layouts.store')
 
 @section('title', 'Preguntas frecuentes | FUJEIRA')
+@section('body-class', 'faqs-page')
 
 @section('content')
-<section class="py-5">
+<section class="section-faqs">
   <div class="container">
     <h1 class="section-title text-center mb-2">Preguntas frecuentes</h1>
     <p class="text-center text-muted mb-5">Todo lo que necesitás saber antes de elegir tu próxima retro.</p>

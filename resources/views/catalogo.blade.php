@@ -1,6 +1,7 @@
 @extends('layouts.store')
 
 @section('title', 'Catálogo | FUJEIRA')
+@section('body-class', 'catalog-page')
 
 @section('content')
 <section class="py-5">

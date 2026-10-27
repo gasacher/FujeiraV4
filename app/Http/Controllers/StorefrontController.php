@@ -11,9 +11,11 @@ class StorefrontController extends Controller
     public function home(Catalog $catalog): View
     {
         return view('home', [
-            'destacados' => $catalog->destacados(),
             'remeras' => $catalog->deCategoria('Fujeira Retro Series')->take(4),
-            'cuadros' => $catalog->all()->filter(fn ($product) => $product->proveedor === 'cuadros')->take(4),
+            'cuadros' => $catalog->destacados()
+                ->filter(fn ($product) => $product->categoria === 'cuadros')
+                ->take(4)
+                ->values(),
         ]);
     }
 

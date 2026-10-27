@@ -13,13 +13,20 @@ class StoreCheckoutTest extends TestCase
 
     public function test_home_lists_a_catalog_product(): void
     {
-        $this->get('/')->assertOk()->assertSee('Los diablos rojos');
+        $this->get('/')
+            ->assertOk()
+            ->assertSee('Los diablos rojos')
+            ->assertSee('hero-slide__mockup', false)
+            ->assertSee('id="destacados"', false)
+            ->assertSee('Cuadros destacados')
+            ->assertDontSee('DEC-CUA-05');
     }
 
     public function test_catalog_filters_retro_series(): void
     {
         $this->get('/catalogo?categoria=Fujeira%20Retro%20Series')
             ->assertOk()
+            ->assertSee('catalog-page', false)
             ->assertSee('Los diablos rojos')
             ->assertDontSee('Román');
     }

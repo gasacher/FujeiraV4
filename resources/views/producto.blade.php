@@ -2,6 +2,7 @@
 
 @section('title', $producto->nombre.' | FUJEIRA')
 @section('description', $producto->nombre.' — FUJEIRA. '.$producto->categoria.'. $'.number_format($producto->precio, 0, ',', '.').'.')
+@section('body-class', 'product-page')
 
 @section('content')
 <section class="py-5">

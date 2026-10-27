@@ -1,6 +1,7 @@
 @extends('layouts.store')
 
 @section('title', 'Nosotros | FUJEIRA')
+@section('body-class', 'inner-page nosotros-page')
 
 @section('content')
 <section class="py-5">
