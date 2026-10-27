@@ -1,241 +1,100 @@
-# FUJEIRA — Tienda Laravel
+# FUJEIRA
 
-La tienda corre con Laravel 11. El catálogo, el carrito y el checkout de Mercado Pago viven en el servidor. El Access Token no está en el código: se lee de `MP_ACCESS_TOKEN`.
+Tienda de remeras de diseño propio y cuadros de arte futbolero. El sitio publicado es [fujeiraretrostore.com](https://fujeiraretrostore.com). El código corre en Hostinger y el repositorio está en GitHub.
 
-El sitio estático anterior quedó en `legacy/`.
+## Cómo está hecha
 
-## Páginas
+Es una aplicación **Laravel 11** (PHP 8.2 o superior). Las páginas las arma el servidor con Blade. El diseño usa Bootstrap 5.3.2, Bootstrap Icons y los estilos de `public/css/main.css`.
 
-- `/` inicio
-- `/catalogo` y `/producto/{codigo}`
-- `/carrito` y `/checkout`
-- `/pago/exitoso`, `/pago/pendiente`, `/pago/fallido`
-- `/nosotros`, `/faqs`, `/contacto`
-- `POST /webhooks/mercadopago` confirma el pago
+El catálogo no está en una tabla. Vive en dos archivos JSON. El carrito vive en la sesión del visitante. Los pedidos se guardan en SQLite. El cobro lo hace Mercado Pago Checkout Pro.
 
-Los precios salen del catálogo (`database/data`), no del navegador. Un talle sin stock no entra al carrito.
+El sitio estático anterior (HTML, JavaScript y el PHP viejo de Mercado Pago) quedó en `legacy/`. La tienda actual no lo usa.
 
-## Cómo correrla
+### Páginas
+
+| Ruta | Qué muestra |
+| --- | --- |
+| `/` | Inicio, con destacados, remeras y cuadros |
+| `/catalogo` | Catálogo. `?categoria=` filtra |
+| `/producto/{codigo}` | Ficha de un producto |
+| `/carrito` | Carrito |
+| `/checkout` | Datos de envío y paso a Mercado Pago |
+| `/pago/exitoso`, `/pago/pendiente`, `/pago/fallido` | Vuelta desde Mercado Pago |
+| `/nosotros`, `/faqs`, `/contacto` | Páginas de la marca |
+| `POST /webhooks/mercadopago` | Aviso de Mercado Pago cuando cambia un pago |
+
+### Catálogo
+
+`app/Catalog/Catalog.php` lee estos archivos:
+
+- `database/data/productos-retroseries.json` — 5 remeras de Fujeira Retro Series.
+- `database/data/productos-cuadros.json` — 19 cuadros.
+
+Cada producto tiene código, nombre, categoría, precio en pesos y fotos. Las remeras tienen talles (S a XXL) y stock por talle. Los cuadros tienen marcos (madera natural, negro, blanco) y no usan stock. Las fotos están en `public/assets/`.
+
+El precio que se cobra sale de esos JSON. El navegador no puede cambiarlo. Un talle sin stock no entra al carrito.
+
+Para cambiar un precio, un nombre o el stock, se edita el JSON correspondiente.
+
+### Carrito
+
+`app/Cart/CartSession.php` guarda las líneas en la sesión, con la clave `fujeira.cart`. Cada línea tiene código, cantidad, talle o marco. Al mostrar el carrito, el servidor vuelve a leer el producto del catálogo y recorta la cantidad si el stock no alcanza.
+
+### Pedido y Mercado Pago
+
+El checkout pide nombre, apellido, email, teléfono y dirección. Con eso se crea un pedido en la tabla `orders`, con número `FJ-` y el id rellenado a 6 cifras (por ejemplo `FJ-000001`). El estado inicial es `pendiente_pago`.
+
+`app/Services/MercadoPagoClient.php` crea una preferencia en `https://api.mercadopago.com/checkout/preferences`. Los ítems van en pesos (ARS), con el precio del catálogo. Mercado Pago devuelve al sitio en `/pago/exitoso`, `/pago/pendiente` o `/pago/fallido`.
+
+El Access Token no está en el código. Se lee de la variable `MP_ACCESS_TOKEN` del archivo `.env` del servidor. Un token que empieza con `TEST-` usa el checkout de prueba. Un token de producción usa el checkout real. Si el token falta, el pedido queda en `error_mp` y el carrito no se vacía.
+
+Cuando `APP_URL` empieza con `https://`, Mercado Pago también avisa a `POST /webhooks/mercadopago`. Esa ruta no lleva el token de formulario de Laravel. El pedido pasa a `aprobado` solo si el pago está aprobado, la moneda es ARS, el monto coincide con el total del pedido y la referencia es el id de ese pedido.
+
+### Dónde está cada parte
+
+```
+FujeiraV4/
+├── app/Catalog/          Catálogo leído de los JSON
+├── app/Cart/             Carrito de la sesión
+├── app/Http/Controllers/ Páginas, carrito, checkout y webhook
+├── app/Models/Order.php  Pedido y confirmación del pago
+├── app/Services/         Cliente de la API de Mercado Pago
+├── database/data/        JSON del catálogo
+├── database/migrations/  Tablas, incluida orders
+├── public/               CSS, imágenes y el front controller de Laravel
+├── resources/views/      HTML de la tienda
+├── routes/web.php        Rutas
+├── index.php             Entrada cuando todo el proyecto está en public_html
+├── .htaccess             Impide entrar por HTTP a .env, app, vendor, etc.
+├── .env.example          Nombres de las variables, sin secretos
+└── legacy/               Sitio estático anterior
+```
+
+En Hostinger el dominio no puede apuntar solo a `public/`. Por eso la raíz del proyecto también tiene `index.php` y `.htaccess`: el proyecto entero se sube a `public_html` y esa entrada manda el tráfico a Laravel. Las direcciones que buscan archivos ocultos, como `/.env`, responden 404.
+
+## Secretos
+
+`.env` no se sube a GitHub. El repositorio solo tiene `.env.example`, con `APP_KEY` y `MP_ACCESS_TOKEN` vacíos. El token nuevo se escribe en el `.env` del servidor, después de revocar en Mercado Pago el token que estuvo publicado en el sitio viejo. Ese token viejo sigue en el historial de Git.
+
+## Cómo correrla en una computadora
 
 ```bash
 composer install
 cp .env.example .env
 php artisan key:generate
+touch database/database.sqlite
 php artisan migrate
 php artisan serve
 ```
 
-En `.env`, `MP_ACCESS_TOKEN` es el Access Token nuevo de Mercado Pago, el que queda después de revocar el que estuvo publicado en el sitio viejo.
+En `.env`, `MP_ACCESS_TOKEN` es el Access Token de Mercado Pago. Sin esa línea el checkout no abre el pago.
+
+Los tests están en `tests/Feature/StoreCheckoutTest.php` y se corren con `php artisan test`.
 
 ## Hostinger
 
-Esta versión se sube dentro de `public_html`. El catálogo es el de Retro Series y cuadros que ya está en `database/data`. Los pasos, en orden, están en `SUBIR-A-HOSTINGER.txt`.
+El ZIP de la versión publicada en GitHub es:
 
-El archivo `.env` se crea en el servidor. `MP_ACCESS_TOKEN` es el Access Token nuevo. No lo subas a GitHub.
+https://github.com/gasacher/FujeiraV4/archive/refs/heads/main.zip
 
----
-
-# FUJEIRA V4 — Sitio web optimizado para SEO
-
-Proyecto de sitio web desarrollado para la materia **Programación con Entornos de Trabajo**, centrado en la aplicación práctica de criterios de SEO on-page, estructura semántica HTML5 y buenas prácticas técnicas para mejorar la visibilidad, el rendimiento y la accesibilidad del sitio.
-
-🔗 **Sitio publicado:** [https://gasacher.github.io/FujeiraV4/](https://gasacher.github.io/FujeiraV4/)
-
----
-
-## 1. Descripción general
-
-FUJEIRA es una marca ficticia de remeras de diseño propio, cuadros y arte futbolero que se utilizó como caso de estudio para aplicar SEO sobre un sitio real. El desarrollo parte de un proyecto previo y lo refactoriza con foco en optimización on-page: metadatos, jerarquía de contenidos, semántica, naming de archivos, imágenes, performance y archivos técnicos (`robots.txt` y `sitemap.xml`).
-
-El sitio está compuesto por múltiples páginas estáticas (home, catálogo, producto, nosotros, FAQs y contacto) y fue publicado en **GitHub Pages** para permitir la evaluación de performance, velocidad de carga y visibilidad en buscadores.
-
----
-
-## 2. Objetivos del proyecto
-
-- Implementar SEO on-page siguiendo los criterios fundamentales vistos en clase.
-- Garantizar una estructura HTML5 semánticamente correcta y jerárquica.
-- Mejorar la accesibilidad del sitio con atributos descriptivos y navegación asistida.
-- Aplicar buenas prácticas en naming de archivos, carpetas y URLs.
-- Optimizar el rendimiento de carga mediante técnicas de priorización y diferido.
-- Configurar los archivos técnicos `robots.txt` y `sitemap.xml` para orientar el rastreo de los buscadores.
-- Asegurar un diseño responsive para mobile, tablet y desktop.
-
----
-
-## 3. Tecnologías utilizadas
-
-- **HTML5** — estructura y semántica.
-- **CSS3** — estilos personalizados sobre la base de Bootstrap.
-- **Bootstrap 5.3.2** — sistema de grilla y componentes responsivos.
-- **Bootstrap Icons 1.11.1** — iconografía vectorial.
-- **Google Fonts** (Bebas Neue, Roboto, League Spartan) — tipografías de marca cargadas con `preconnect`.
-- **GitHub Pages** — hosting y despliegue.
-
----
-
-## 4. Implementación SEO
-
-### Metaetiquetas
-Cada página del sitio cuenta con sus propios bloques `<meta>` orientados a buscadores y a la lectura correcta del documento:
-
-- `<meta charset="UTF-8">` y `<meta name="viewport" content="width=device-width, initial-scale=1.0">` en todas las páginas.
-- `<title>` único y descriptivo por página, con estructura `Sección | Marca` para mejorar el CTR en SERP.
-- `<meta name="description">` redactada específicamente por página, orientada a palabras clave del negocio (remeras, retro, diseño, arte futbolero, catálogo, envíos).
-- `<html lang="es">` para indicar el idioma principal del contenido.
-- `<link rel="icon">` con favicon propio de la marca.
-
-### Jerarquía de headings
-Se respeta un árbol de encabezados coherente en cada página:
-
-- Un único `<h1>` por página, vinculado al tema principal.
-- `<h2>` para secciones de primer nivel (destacados, cómo funciona, comunidad, FAQs, contacto).
-- `<h3>` para subsecciones dentro de cada bloque (pasos del proceso de compra, preguntas individuales, etc.).
-
-### Palabras clave
-El contenido editorial fue redactado orientado a un conjunto de keywords del nicho: *remeras de diseño*, *Fujeira Retro Series*, *cuadros*, *arte futbolero*, *camiseta retro*, *envíos Argentina*. Se cuidó la densidad natural evitando sobre-repetición (keyword stuffing), distribuyendo los términos entre títulos, descripciones, encabezados y textos de contenido.
-
-### Estructura semántica
-Uso explícito de etiquetas HTML5 en lugar de `<div>` genéricos:
-
-- `<header>` para encabezados de página y hero.
-- `<nav>` para la navegación principal y los enlaces del footer.
-- `<main>` como contenedor del contenido principal.
-- `<section>` para cada bloque temático.
-- `<article>` y `<figure>` donde corresponde.
-- `<footer>` para el pie del sitio.
-
-### Accesibilidad complementaria
-- Enlace `skip-to-content` al inicio de cada página para saltar a la sección principal con el teclado.
-- `aria-label` y `aria-hidden` aplicados a botones de navegación y elementos decorativos.
-- Atributos `alt` descriptivos en todas las imágenes significativas.
-
----
-
-## 5. Estructura del sitio
-
-```
-FujeiraV4/
-├── index.html              → Home (hero, destacados, cómo funciona, comunidad)
-├── catalogo.html           → Catálogo con filtros y buscador
-├── producto.html           → Ficha de producto individual
-├── nosotros.html           → Historia y línea Retro Series
-├── faqs.html               → Preguntas frecuentes
-├── contacto.html           → Canales de contacto
-├── robots.txt              → Directivas para crawlers
-├── sitemap.xml             → Mapa del sitio para buscadores
-├── assets/
-│   ├── img/                → Logos, favicon, imágenes generales
-│   └── catalogo/           → Imágenes de productos por línea
-├── css/
-│   └── main.css            → Estilos compilados
-└── js/                     → Scripts modulares por página
-```
-
----
-
-## 6. Buenas prácticas aplicadas
-
-### Naming de archivos y URLs amigables
-Las páginas siguen un naming claro, en minúsculas, sin acentos ni caracteres especiales, y descriptivo del contenido: `catalogo.html`, `nosotros.html`, `faqs.html`, `contacto.html`, `producto.html`. Esto facilita la lectura de URLs por parte de usuarios y buscadores.
-
-### Atributos ALT en imágenes
-Todas las imágenes de productos y de contenido cuentan con atributo `alt` descriptivo, orientado a la función de la imagen y al producto mostrado (por ejemplo, *"Remera Fujeira Retro Series Diablos Rojos"*). Las imágenes puramente decorativas del hero usan `aria-hidden="true"` para no generar ruido en lectores de pantalla.
-
-### Enlaces externos seguros
-Todos los enlaces externos (Instagram, WhatsApp) incluyen `target="_blank"` junto con `rel="noopener noreferrer"` para proteger la sesión del usuario y evitar filtrado de referrer.
-
-### Contenido único por página
-Cada página posee título, descripción y H1 diferenciados, evitando contenido duplicado que pueda penalizar el posicionamiento.
-
----
-
-## 7. Archivos SEO técnicos
-
-### `robots.txt`
-Se configuró el archivo `robots.txt` en la raíz del sitio para orientar el comportamiento de los rastreadores:
-
-- Permite el rastreo general del sitio con `Allow: /`.
-- Bloquea el acceso a las páginas de retorno del flujo de pago (`/pago-exitoso.html`, `/pago-fallido.html`, `/pago-pendiente.html`), que no aportan valor SEO y pueden ensuciar el índice.
-- Declara la ubicación del sitemap mediante `Sitemap: https://gasacher.github.io/FujeiraV4/sitemap.xml` para facilitar el descubrimiento.
-
-### `sitemap.xml`
-El mapa del sitio lista las URLs públicas prioritarias — home, catálogo, nosotros, FAQs, contacto y producto — usando el estándar `sitemaps.org` para que buscadores como Google puedan rastrear e indexar todo el contenido relevante en una sola lectura.
-
----
-
-## 8. Responsive Design
-
-El sitio está diseñado mobile-first y se adapta de forma fluida a tres breakpoints principales:
-
-- **Mobile** (< 768px): navegación colapsada con toggler, grillas en una columna, tipografía y espaciados ajustados.
-- **Tablet** (768px – 992px): grillas de 2 columnas, hero reestructurado.
-- **Desktop** (> 992px): navegación horizontal completa, grillas de 3 y 4 columnas, hero con composición de mockups.
-
-Esto se logra combinando el sistema de grilla de Bootstrap 5 con media queries propias en `main.css`. Todas las imágenes declaran atributos `width` y `height` para evitar saltos de layout (CLS) al cargarse.
-
----
-
-## 9. Optimización de performance
-
-Se aplicaron varias técnicas para reducir el tiempo de carga percibido y mejorar métricas de Core Web Vitals:
-
-- **`preconnect`** hacia CDNs y Google Fonts para acelerar el handshake inicial.
-- **`preload`** de la imagen principal del hero (`fetchpriority="high"`) para priorizar el LCP.
-- **`loading="lazy"`** en imágenes fuera del viewport inicial (footer, Instagram grid, slides secundarios).
-- **`decoding="async"`** para que el decode de imágenes no bloquee el renderizado.
-- Dimensiones explícitas (`width`/`height`) en imágenes clave para evitar CLS.
-- CSS y JS propios servidos con parámetro de versionado (`?v=...`) para control de caché.
-- Carga de Bootstrap y Bootstrap Icons desde CDN con HTTPS.
-- Scripts no críticos cargados con `type="module"` para diferir ejecución.
-
----
-
-## 10. Variable de entorno de Mercado Pago
-
-El Access Token de producción **no va en el código ni en GitHub**. `api/crear-preferencia.php` lo lee de la variable `MP_ACCESS_TOKEN` con `getenv()` y `$_ENV` (también `$_SERVER`, por si el hosting la expone ahí).
-
-El token que estuvo escrito en ese archivo quedó público: sigue en el historial de Git y este cambio no reescribe la historia. En el panel de Mercado Pago hay que **revocar ese Access Token y crear uno nuevo**. En el servidor se configura solo el token nuevo.
-
-Los nombres están en `.env.example`. El archivo real `.env` está en `.gitignore`.
-
-### Hostinger (sitio PHP en `public_html`)
-
-La pantalla **Environment variables** de hPanel es para aplicaciones **Node.js** ([documentación](https://www.hostinger.com/support/how-to-edit-or-add-environment-variables-after-deployment/)). Este checkout corre en PHP, así que el valor se carga desde el entorno del proceso o desde un `.env` en el servidor.
-
-1. Entrá a hPanel → **Sitios web** → **Administrar** → **Archivos** → **Administrador de archivos**.
-2. Abrí la carpeta del dominio que **contiene** `public_html` (el mismo nivel que `public_html`, no adentro). En un plan compartido suele ser `domains/fujeiraretrostore.com/`.
-3. Creá un archivo llamado `.env` con una sola línea, sin comillas y sin subirlo a GitHub:
-
-   ```
-   MP_ACCESS_TOKEN=your_mercado_pago_access_token
-   ```
-
-4. El script busca ese archivo en este orden: un nivel arriba de la raíz del sitio (junto a `public_html`), la raíz del sitio y `api/.env`. Si PHP no puede leer fuera de `public_html` (`open_basedir`), dejá el `.env` en la raíz del sitio. El `.htaccess` del repositorio niega la descarga de `.env` por URL.
-5. Si el sitio se despliega desde GitHub, el deploy suele pisar `public_html`. El `.env` de al lado de `public_html` se conserva. Si lo pusiste dentro de `public_html`, volvé a crearlo después de cada deploy.
-
-Si más adelante el dominio se publica como app Node.js en Hostinger: **Sitios web → Panel → Environment variables**, agregá `MP_ACCESS_TOKEN` y aplicá los cambios. No commitees el valor.
-
-Una variable ya definida por el hosting (pantalla de Environment variables o `SetEnv` solo en el servidor) tiene prioridad sobre el archivo `.env`. No agregues el token con `SetEnv` en un `.htaccess` que se suba a GitHub.
-
-### GitHub
-
-El repositorio es público. Solo se versiona `.env.example`, con el nombre de la variable y un placeholder. No pegues el Access Token en el código, en un commit ni en un issue.
-
-Sin la variable, `POST /api/crear-preferencia.php` responde `503` con `Mercado Pago no configurado`.
-
----
-
-## 11. Conclusión y aprendizajes
-
-El proyecto permitió llevar a la práctica, sobre un caso real, la mayoría de los conceptos trabajados en cursada: desde la redacción de metadatos orientados a búsqueda, pasando por la reestructuración semántica del HTML, hasta el trabajo fino de performance con atributos nativos del navegador.
-
-Los principales aprendizajes fueron:
-
-- El SEO on-page no es una capa decorativa: condiciona la forma en que se escribe el HTML desde el primer `<!DOCTYPE>`.
-- La semántica HTML5 no solo suma en accesibilidad; también facilita el parseo del contenido por parte de los buscadores.
-- Pequeñas decisiones técnicas (`preload`, `lazy`, `width`/`height`) tienen impacto directo en métricas como LCP y CLS.
-- El naming consistente de archivos y carpetas es una tarea invisible pero crítica para URLs limpias y mantenibilidad a futuro.
-- Publicar en GitHub Pages obliga a pensar el sitio como un deploy real, con rutas absolutas y comportamiento productivo, no como un entorno local.
-
-El resultado es un sitio que combina una identidad de marca fuerte con una base técnica ordenada, lista para seguir creciendo y para ser auditada con herramientas como Lighthouse o PageSpeed Insights.
+Se sube a `public_html`, se extrae y se mueve el contenido de la carpeta que crea el ZIP hasta `public_html`. Hay que borrar el `index.html` viejo. El `.env` se crea en el servidor copiando `.env.example`. Los comandos de Composer, la clave, la base SQLite y los permisos están en `SUBIR-A-HOSTINGER.txt`.
